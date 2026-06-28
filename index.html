@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+spore
+   -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
+   <title>spore</title>    
+</head>
+<body>
+    <h1>spore</h1>
+    <a href = "https://github.com/lafelabs/spore/">spore code</a>    
+    <div id = "html-files"></div>
+    <div id = "directories"></div>
+    <textarea id = "wall"></textarea>
+<script>
+
+var httpcFiles = new XMLHttpRequest();
+httpcFiles.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        files = JSON.parse(this.responseText);
+        for(var index = 0;index < files.length;index++){
+            if(files[index].substring(files[index].length-5,files[index].length) == ".html" && files[index] != "index.html"){
+                var newa = document.createElement("A");
+                newa.href = files[index];
+                newa.innerHTML = files[index];
+                document.getElementById("html-files").appendChild(newa);
+            }
+        }   
+    }
+};
+httpcFiles.open("GET", "list-files.php", true);
+httpcFiles.send();
+
+directories = [];
+var httpcDirectories = new XMLHttpRequest();
+    httpcDirectories.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        directories = JSON.parse(this.responseText);
+        var newa = document.createElement("A");
+        newa.innerHTML = "up a level (../)";
+        newa.href = "../";
+        document.getElementById("directories").appendChild(newa);
+        for(var index = 0;index < directories.length;index++) {
+            var newa = document.createElement("A");
+            newa.innerHTML = directories[index] + "/";
+            newa.href = directories[index] + "/";
+            document.getElementById("directories").appendChild(newa);
+        }
+    }
+};
+
+httpcDirectories.open("GET", "list-directories.php", true);
+httpcDirectories.send();
+
+
+wall = "";
+var httpcWall = new XMLHttpRequest();
+httpcWall.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        wall = this.responseText;
+        document.getElementById("wall").value = wall;  
+    }
+};
+httpcWall.open("GET", "load-file.php?filename=wall.txt", true);
+httpcWall.send();
+
+document.getElementById("wall").onkeyup = function() {
+    wall = this.value;
+    data = encodeURIComponent(this.value);
+    var httpcWallLive = new XMLHttpRequest();
+    var url = "save-file.php";        
+    httpcWallLive.open("POST", url, true);
+    httpcWallLive.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpcWallLive.send("data="+data+"&filename=wall.txt");//send text to save-file.php
+}
+
+
+</script>
+<style>
+body{
+    font-family:Arial;
+}
+h1{
+    text-align:center;
+    font-size:4em;
+}
+p{
+    text-align:justify;
+    padding:1em 1em 1em 1em;
+    font-size:1.5em;
+    border:solid;
+    display:block;
+    border-color:white;
+    border-width:10px;
+    border-radius:1em;
+    background-color:#0000ff;
+    color:white;
+    width:80%;
+    margin:auto;
+    margin-top:1em;
+
+}
+a{
+    text-align:center;
+    font-size:3em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    border-radius:0.5em;
+    border-width:0.5em;
+    color:black;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+}
+#wall{
+    width:80%;
+    display:block;
+    margin:auto;
+    border:solid;
+    FONT-FAMILY:Arial;
+    font-size:2em;
+    height:20em;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    border-radius:0.5em;
+}
+</style>
+</body>
+</html>
