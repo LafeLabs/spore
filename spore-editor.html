@@ -2,7 +2,7 @@
 <html>
 <head>
  <!-- 
-edit files in .html, .js, .json, and .css, .php, .py, .txt, .md
+edit files in .html, .js, .json, .css, .php, .py, .txt,  and .md
 -->
 
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
@@ -13,10 +13,11 @@ https://ace.c9.io/
 
 list of languages:
 https://cloud9-sdk.readme.io/docs/language-mode
+ace.js is BSD license
 
 -->    
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js" integrity="sha512-T2otaV2NuxAJAOCoj8ijyy+eAAadZlpvdLmakrIGVFbBkthgIFqLTXd+T8Z+S+kf4V7Ib5+6f6r4D4IdS9Ey4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <title>spore code editor</title>
 
@@ -33,7 +34,7 @@ https://cloud9-sdk.readme.io/docs/language-mode
         <td id = "currentfilename"></td>
     </tr>
     <tr>
-        <td>New File Name(end with .html, .js, .css, .json, .php, .md, .txt):</td>
+        <td>New File Name(end with .html, .js, .css, .py, .bat, .json, .php, .md, .txt):</td>
         <td><input id = "newscrollinput"/></td>
     </tr>
 </table>
@@ -55,20 +56,22 @@ editor.getSession().setMode("ace/mode/html");
 editor.getSession().setUseWrapMode(true);
 editor.$blockScrolling = Infinity;
 editor.setTheme("ace/theme/vibrant_ink");
+editor.setOption("useWorker", false);
+
 
 currentFile = "index.html";
-var httpc = new XMLHttpRequest();
-httpc.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        filedata = this.responseText;
-        setmode();
+
+fetch('load-file.php?filename=' + currentFile)
+    .then(response => response.text())
+    .then(textData => {
+        filedata = textData; // Use the data returned by fetch here
+        setMode();
         editor.setValue(filedata);
         document.getElementById("currentfilename").innerHTML = currentFile;
-    }
-};
-httpc.open("GET", "load-file.php?filename=" + currentFile, true);
-httpc.send();
-
+    })
+    .catch(error => {
+        console.error("Error loading file:", error);
+    });
 
 scrolls = [];
 var httpc8 = new XMLHttpRequest();
@@ -108,7 +111,7 @@ httpc8.onreadystatechange = function() {
                     httpc.onreadystatechange = function() {
                         if (this.readyState == 4 && this.status == 200) {
                             filedata = this.responseText;
-                            setmode();
+                            setMode();
                             editor.setValue(filedata);
                             var fileType = currentFile.split("/")[0]; 
                             var fileName = currentFile.split("/")[1];
@@ -151,7 +154,6 @@ document.getElementById("newscrollinput").style.color = "white";
 
 editor.setTheme("ace/theme/vibrant_ink");
 
-        
 document.getElementById("newscrollinput").value = "";
 
 name = "";
@@ -160,7 +162,7 @@ document.getElementById("newscrollinput").onchange = function(){
     currentFile = name;
     scroll = editor.getSession().getValue();
 
-    setmode();
+    setMode();
     editor.setValue(scroll);  
     data = encodeURIComponent(scroll);
     var httpc = new XMLHttpRequest();
@@ -187,7 +189,7 @@ function addcodelink(codename){
         httpc.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 filedata = this.responseText;
-                setmode();
+                setMode();
                 editor.setValue(filedata);
                 var fileType = currentFile.split("/")[0]; 
                 var fileName = currentFile.split("/")[1];
@@ -203,47 +205,31 @@ function addcodelink(codename){
 }
 
 
-function setmode(){
-    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".py"){
-        editor.getSession().setMode("ace/mode/python");
-    }
-    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".txt"){
-        editor.getSession().setMode("ace/mode/text");
-    }    
-    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".md"){
-        editor.getSession().setMode("ace/mode/markdown");
-    }
-    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".tex"){
-        editor.getSession().setMode("ace/mode/latex");
-    }
-    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".js"){
-        editor.getSession().setMode("ace/mode/javascript");
-    }    
-    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".ino"){
-        editor.getSession().setMode("ace/mode/java");
-    }   
-    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".css"){
-        editor.getSession().setMode("ace/mode/css");
-    }       
-    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".php"){
-        editor.getSession().setMode("ace/mode/php");
-    }       
-    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".html"){
-        editor.getSession().setMode("ace/mode/html");
-    }   
-    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".json"){
-        editor.getSession().setMode("ace/mode/json");
-    }       
-    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".bat"){
-        editor.getSession().setMode("ace/mode/batchfile");
-    }    
-     if(currentFile.substring(currentFile.length-3,currentFile.length) == ".sh"){
-        editor.getSession().setMode("ace/mode/sh");
-    }    
+function setMode() {
+  // Extract everything after the last dot, converted to lowercase
+  const ext = currentFile.slice(currentFile.lastIndexOf('.')).toLowerCase();
+
+  // Define a map of extensions to Ace Editor modes
+  const modeMap = {
+    '.py': 'python',
+    '.txt': 'text',
+    '.md': 'markdown',
+    '.tex': 'latex',
+    '.js': 'javascript',
+    '.ino': 'java', // Mapping from your original code
+    '.css': 'css',
+    '.php': 'php',
+    '.html': 'html',
+    '.json': 'json',
+    '.bat': 'batchfile',
+    '.sh': 'sh'
+  };
+
+  // Look up the mode, defaulting to 'text' if the extension isn't found
+  const mode = modeMap[ext] || 'text';
+  
+  editor.getSession().setMode(`ace/mode/${mode}`);
 }
-
-codesquaresize = 120;
-
 
 lightmode = false;
 document.getElementById("lightdarkbutton").onclick = function(){
