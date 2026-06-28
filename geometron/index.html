@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+spore
+   -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
+   <title>spore</title>    
+</head>
+<body>
+    <h1>spore</h1>
+    <div id = "html-files"></div>
+    <div id = "directories"></div>
+    <textarea id = "wall"></textarea>
+<script>
+
+fetch('list-files.php')
+    .then(xhr => xhr.json())
+    .then(files => {
+        for (var index = 0; index < files.length; index++) {
+            if (files[index].substring(files[index].length - 5, files[index].length) == ".html" && files[index] != "index.html") {
+                var newa = document.createElement("A");
+                newa.href = files[index];
+                newa.innerHTML = files[index];
+                document.getElementById("html-files").appendChild(newa);
+            }
+        }
+    });
+
+
+directories = [];
+
+fetch('list-directories.php')
+    .then(xhr => xhr.json())
+    .then(data => {
+        directories = data;
+        
+        var newa = document.createElement("A");
+        newa.innerHTML = "up a level (../)";
+        newa.href = "../";
+        document.getElementById("directories").appendChild(newa);
+        
+        for (var index = 0; index < directories.length; index++) {
+            var newa = document.createElement("A");
+            newa.innerHTML = directories[index] + "/";
+            newa.href = directories[index] + "/";
+            document.getElementById("directories").appendChild(newa);
+        }
+    });
+
+wall = "";
+fetch('load-file.php?filename=wall.txt')
+    .then(xhr => xhr.text())
+    .then(wall => {
+        document.getElementById("wall").value = wall;
+});
+
+
+document.getElementById("wall").onkeyup = function() {
+    wall = this.value;
+    data = encodeURIComponent(this.value);
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=wall.txt'
+    });
+
+}
+
+
+</script>
+<style>
+body{
+    font-family:Arial;
+}
+h1{
+    text-align:center;
+    font-size:4em;
+}
+p{
+    text-align:justify;
+    padding:1em 1em 1em 1em;
+    font-size:1.5em;
+    border:solid;
+    display:block;
+    border-color:white;
+    border-width:10px;
+    border-radius:1em;
+    background-color:#0000ff;
+    color:white;
+    width:80%;
+    margin:auto;
+    margin-top:1em;
+
+}
+a{
+    text-align:center;
+    font-size:3em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    border-radius:0.5em;
+    border-width:0.5em;
+    color:black;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+}
+#wall{
+    width:80%;
+    display:block;
+    margin:auto;
+    border:solid;
+    FONT-FAMILY:Arial;
+    font-size:2em;
+    height:20em;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    border-radius:0.5em;
+}
+</style>
+</body>
+</html>

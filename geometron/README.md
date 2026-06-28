@@ -3,7 +3,7 @@
 self-replicating web swarm
 
  - [index.html](index.html)
- - [editor.html](editor.html)
+ - [spore-editor.html](spore-editor.html)
  - [load-file.php](load-file.php)
  - [save-file.php](save-file.php)
  - [save-file-get.php](save-file-get.php)

@@ -3,7 +3,7 @@ $spore = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore
 $baseurl = explode("spore.php",$spore)[0];
 
 @copy($baseurl."index.html","index.html");
-@copy($baseurl."editor.html","editor.html");
+@copy($baseurl."spore-editor.html","spore-editor.html");
 @copy($baseurl."save-file.php","save-file.php");
 @copy($baseurl."save-file-get.php","save-file-get.php");
 @copy($baseurl."load-file.php","load-file.php");
