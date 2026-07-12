@@ -11,5 +11,6 @@ self-replicating web swarm
  - [README.md](README.md)
  - [readme.html](readme.html)
  - [spore.php](spore.php)
+ - [meta-spore.php](meta-spore.php)
  - [spore.json](spore.json)
  - [wall.txt](wall.txt)
