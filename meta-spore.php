@@ -1,6 +1,3 @@
-<!-- 
-this program generates the file dna.txt which lists the files to replicate 
--->
 <a style ="font-family:Arial;color:blue;font-size:1.5em;" href = "index.html">index.html</a>
 <br>
 <br>
