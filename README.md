@@ -8,6 +8,7 @@ self-replicating web swarm
  - [save-file.php](save-file.php)
  - [list-files.php](list-files.php)
  - [list-directories.php](list-directories.php)
+ - [qrcode.html](qrcode.html)
  - [README.md](README.md)
  - [readme.html](readme.html)
  - [spore.php](spore.php)

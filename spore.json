@@ -7,6 +7,7 @@
     "list-files.php",
     "load-file.php",
     "meta-spore.php",
+    "qrcode.html",
     "readme.html",
     "save-file.php",
     "spore.json",
