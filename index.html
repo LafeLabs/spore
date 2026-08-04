@@ -13,24 +13,12 @@ spore
     <h1>spore</h1>
     <div id = "qrcode"></div>
     <a href = "https://github.com/lafelabs/spore/">spore code</a>    
-    <div id = "html-files"></div>
+    <a href="news.html">NEWS</a>
+    <a href = "market.html">MARKET</a>
+    <a href= "freebox.html">FREEBOX</a>
     <div id = "directories"></div>
     <textarea id = "wall"></textarea>
 <script>
-
-fetch('list-files.php')
-    .then(xhr => xhr.json())
-    .then(files => {
-        for (var index = 0; index < files.length; index++) {
-            if (files[index].substring(files[index].length - 5, files[index].length) == ".html" && files[index] != "index.html") {
-                var newa = document.createElement("A");
-                newa.href = files[index];
-                newa.innerHTML = files[index];
-                document.getElementById("html-files").appendChild(newa);
-            }
-        }
-    });
-
 
 directories = [];
 
