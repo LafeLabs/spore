@@ -3,57 +3,22 @@
 <head>
    <meta charset="utf-8">
    <!--
-spore
+news
    -->
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
-  <title>spore</title>  
+  <title>market</title>  
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
-    <h1>spore</h1>
+    <a href ="index.html">HOME</a>
     <div id = "qrcode"></div>
-    <a href = "https://github.com/lafelabs/spore/">spore code</a>    
-    <div id = "html-files"></div>
-    <div id = "directories"></div>
+    <h1>market</h1>
     <textarea id = "wall"></textarea>
 <script>
 
-fetch('list-files.php')
-    .then(xhr => xhr.json())
-    .then(files => {
-        for (var index = 0; index < files.length; index++) {
-            if (files[index].substring(files[index].length - 5, files[index].length) == ".html" && files[index] != "index.html") {
-                var newa = document.createElement("A");
-                newa.href = files[index];
-                newa.innerHTML = files[index];
-                document.getElementById("html-files").appendChild(newa);
-            }
-        }
-    });
-
-
-directories = [];
-
-fetch('list-directories.php')
-    .then(xhr => xhr.json())
-    .then(data => {
-        directories = data;
-        
-        var newa = document.createElement("A");
-        newa.innerHTML = "up a level (../)";
-        newa.href = "../";
-        document.getElementById("directories").appendChild(newa);
-        
-        for (var index = 0; index < directories.length; index++) {
-            var newa = document.createElement("A");
-            newa.innerHTML = directories[index] + "/";
-            newa.href = directories[index] + "/";
-            document.getElementById("directories").appendChild(newa);
-        }
-    });
 
 wall = "";
-fetch('load-file.php?filename=wall.txt')
+fetch('load-file.php?filename=market.txt')
     .then(xhr => xhr.text())
     .then(wall => {
         document.getElementById("wall").value = wall;
@@ -66,7 +31,7 @@ document.getElementById("wall").onkeyup = function() {
     fetch('save-file.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-        body: 'data=' + data + '&filename=wall.txt'
+        body: 'data=' + data + '&filename=market.txt'
     });
 
 }
