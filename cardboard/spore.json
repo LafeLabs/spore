@@ -3,7 +3,6 @@
     "delete-file.php",
     "delete-fork.php",
     "editor.html",
-    "feed.html",
     "feed.json",
     "fork.html",
     "fork.php",
@@ -12,8 +11,11 @@
     "list-directories.php",
     "list-files.php",
     "load-file.php",
+    "market.html",
+    "market.txt",
     "meta-spore.php",
-    "mushroom.txt",
+    "news.html",
+    "news.txt",
     "qrcode.html",
     "readme.html",
     "save-file.php",
@@ -22,5 +24,6 @@
     "spore.php",
     "stack.html",
     "upload-image.php",
-    "wall.txt"
+    "wall.txt",
+    "world.html"
 ]

@@ -6,16 +6,14 @@
 spore stack
    -->
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
-  <title>spore stack</title>  
+  <title>stack</title>  
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
     <div id = "qrcode"></div>
     <h1 id ="stack-link">stack</h1>
-    <h1 id ="feed-link">feed</h1>
     <h1 id = "title">stack</h1>
     <div id = "stack"></div>
-    <div id = "feed"></div>
     <textarea id = "sign"></textarea>
 <script>
 
@@ -77,37 +75,6 @@ document.getElementById("stack-link").onclick = function(){
     document.getElementById("sign").style.display = "none";
     document.getElementById("stack").style.display = "block";
     document.getElementById("stack-link").style.display = "none";
-    document.getElementById("feed").style.display = "none";
-    document.getElementById("feed-link").style.display = "block";
-    document.getElementById("title").innerHTML = "STACK";
-    
-}
-
-
-feed = [];
-var httpc = new XMLHttpRequest();
-httpc.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        feed = JSON.parse(this.responseText);
-        for(let index = 0;index < feed.length;index++){
-            var newa = document.createElement("A");
-            newa.innerHTML = feed[index].innerHTML;
-            newa.href = feed[index].href;
-            document.getElementById("feed").appendChild(newa);
-        }
-
-    }
-};
-httpc.open("GET", "load-file.php?filename=feed.json", true);
-httpc.send()
-
-document.getElementById("feed-link").onclick = function(){
-    document.getElementById("sign").style.display = "none";
-    document.getElementById("stack").style.display = "none";
-    document.getElementById("feed").style.display = "block";
-    document.getElementById("stack-link").style.display = "block";
-    this.style.display = "none";    
-    document.getElementById("title").innerHTML = "FEED";
 }
 
 </script>
@@ -118,19 +85,6 @@ document.getElementById("feed-link").onclick = function(){
   top: 10px;
   right: 10px;
   font-size: clamp(1.5em, 5vw, 3em);
-}
-#feed-link{
-  position: absolute;
-  border:solid;
-  font-size:1em;
-  border-radius:10px;
-  padding-left:1em;
-  padding-right:1em;
-  cursor:pointer;
-  top: 10px;
-  left: 25%;
-  font-size: clamp(1.5em, 5vw, 3em);
-    
 }
 #stack-link{
   position: absolute;
@@ -158,8 +112,6 @@ document.getElementById("feed-link").onclick = function(){
   border-radius: 0.5em;
   padding: 0.5em;
   position: absolute;
-    border:solid;
-
   top: max(180px, 25vw);
   left: 10px;
   bottom: 10px;
@@ -167,25 +119,6 @@ document.getElementById("feed-link").onclick = function(){
   display:none;
   font-size: clamp(1.2em, 4vw, 3em);
 }
-#feed {
-  font-family: Comic Sans MS;
-  background-color: #9f8767;
-  box-sizing: border-box;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  position: absolute;
-    border:solid;
-
-  top: max(180px, 25vw);
-  left: 10px;
-  bottom: 10px;
-  right: 10px;
-  display:none;
-  font-size: clamp(1.2em, 4vw, 3em);
-    overflow:scroll;
-
-}
-
 #stack {
   font-family: Comic Sans MS;
   background-color: #9f8767;
@@ -215,22 +148,6 @@ document.getElementById("feed-link").onclick = function(){
     overflow-x:scroll;
     cursor:pointer;
 }
-#feed a{
-    text-align:center;
-    font-size:2em;
-    width:80%;
-    margin:auto;
-    display:block;
-    border:solid;
-    color:blue;
-    border-radius:0.5em;
-    border-width:0.1em;
-    margin-top:1em;
-    margin-bottom:0.5em;
-    overflow-x:scroll;
-    cursor:pointer;
-    
-}
 body {
   background-color: #9f8767;
   font-family:  Comic Sans MS;
@@ -242,10 +159,6 @@ body {
     font-size: 3em;
   }
   #stack {
-    top: 180px;
-    font-size: 3em;
-  }
-  #feed {
     top: 180px;
     font-size: 3em;
   }
