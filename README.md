@@ -2,12 +2,19 @@
 
 # [spore](https://github.com/lafelabs/spore/)
 
-self-replicating web swarm
+SELF-REPLICATING WEB SWARM!
 
-## Replicate:
+"DECENTRALIZED" LIKE "THE DITCH BEHIND THE OLIVE GARDEN"!
 
- - buy a domain or get a subdomain from someone
- - get a digital ocean account and set up a droplet
+FREE LIKE AN UNLOCKED DUMPSTER!
+
+BECOME THE FUNGUS!
+
+
+## Replication Path:
+
+ - [buy a domain](https://porkbun.com/) or get a subdomain from someone for your local trash  magic universe
+ - get a [digital ocean](https://www.digitalocean.com/) account and set up a droplet
  - point name servers to 
     - NS1.DIGITALOCEAN.COM
     - NS2.DIGITALOCEAN.COM
@@ -106,6 +113,11 @@ a{
 ![](black-flag-5.png)
 ![](black-flag-6.png)
 ![](black-flag-7.png)
+![](black-flag-8.png)
+![](black-flag-9.png)
+![](black-flag-10.png)
+![](black-flag-11.png)
+![](black-flag-12.png)
 
 ## Cardboard Signs
 
@@ -130,3 +142,6 @@ a{
  - [https://skoolie.lol/](https://skoolie.lol/)
  - [https://quantumnoise.org/](https://quantumnoise.org/)
 
+## Rocks
+
+![](rock-1.png)
