@@ -21,7 +21,13 @@
 </table>
 <a id = "linklink"></a>
 <div id = "qrcode"></div>
-
+<table>
+    <tr>
+        <td>WIDTH:</td>
+        <td><input id = "width-input"></td>
+        <td>PIXELS</td>
+    </tr>
+</table>
 <script>
 
 codesquaresize = 512;
@@ -59,6 +65,15 @@ qrcode = new QRCode(document.getElementById("qrcode"), {
 });
 
 
+document.getElementById("width-input").value = codesquaresize.toString();
+
+document.getElementById("width-input").onchange = function(){
+    codesquaresize = parseInt(this.value);
+     qrcode._htOption.width = codesquaresize;
+    qrcode._htOption.height = codesquaresize;    
+    qrcode.makeCode(globalurl);
+}
+
 
 
 </script>
@@ -71,7 +86,6 @@ body{
     font-family:Arial;
 }
 canvas,img{
-    border:solid;
     border-width:4px;
     margin:1em 1em 1em 1em;
 }

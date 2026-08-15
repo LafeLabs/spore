@@ -1,6 +1,6 @@
 ![](qrcode.png)
 
-# [spore](https://github.com/lafelabs/spore/)
+# [spore](r)
 
 self-replicating web swarm
 
@@ -32,4 +32,66 @@ self-replicating web swarm
  - ```certbot --apache -d [DOMAIN]```
  - ```chown -R www-data:www-data /var/www/[DOMAIN]/public_html```
 
+## Spore.php
 
+```
+<?php
+$sporeUrl = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.json";
+
+$baseUrl = explode("spore.json",$sporeUrl)[0];
+
+$files = json_decode(file_get_contents($sporeUrl), true);
+
+foreach ($files as $file) {
+    @copy($baseUrl.$file,$file);
+}
+
+
+?>
+<a href = "index.html">index.html</a>
+<style>
+body{
+    font-size:3em;
+    font-family:arial;
+}
+a{
+    font-size:3em;
+    color:blue;
+}
+</style>
+```
+
+
+## Spore.json
+
+```
+
+[
+    "README.md",
+    "delete-file.php",
+    "delete-fork.php",
+    "editor.html",
+    "feed.html",
+    "feed.json",
+    "fork.html",
+    "fork.php",
+    "freebox.html",
+    "index.html",
+    "list-directories.php",
+    "list-files.php",
+    "load-file.php",
+    "meta-spore.php",
+    "mushroom.txt",
+    "qrcode.html",
+    "readme.html",
+    "save-file.php",
+    "spore.html",
+    "spore.json",
+    "spore.php",
+    "stack.html",
+    "template.conf.txt",
+    "upload-image.php",
+    "wall.txt"
+]
+
+```
