@@ -1,6 +1,6 @@
 ![](qrcode.png)
 
-# [spore](r)
+# [spore](github.com/lafelabs/spore/)
 
 self-replicating web swarm
 
@@ -32,7 +32,7 @@ self-replicating web swarm
  - ```certbot --apache -d [DOMAIN]```
  - ```chown -R www-data:www-data /var/www/[DOMAIN]/public_html```
 
-## Spore.php
+## [Spore.php](https://github.com/LafeLabs/spore/blob/main/spore.php)
 
 ```
 <?php
@@ -62,7 +62,7 @@ a{
 ```
 
 
-## Spore.json
+## [Spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json
 
 ```
 
@@ -95,3 +95,38 @@ a{
 ]
 
 ```
+
+
+## Black Flags
+
+![](black-flag-1.png)
+![](black-flag-2.png)
+![](black-flag-3.png)
+![](black-flag-4.png)
+![](black-flag-5.png)
+![](black-flag-6.png)
+![](black-flag-7.png)
+
+## Cardboard Signs
+
+![](cardboard-sign-1.png)
+![](cardboard-sign-2.png)
+![](cardboard-sign-3.png)
+![](cardboard-sign-4.png)
+![](cardboard-sign-5.png)
+![](cardboard-sign-6.png)
+
+
+## Live Web Pages
+
+ - [https://trashrobot.net/](https://trashrobot.net/)
+ - [https://trashrobot.org/](https://trashrobot.org/)
+ - [https://aerostatpark.net/](https://aerostatpark.net/)
+ - [https://composttheology.net/](https://composttheology.net/)
+ - [https://soiltheology.net/](https://soiltheology.net/)
+ - [https://southplatte.net](https://southplatte.net)
+ - [https://basemar.lol/](https://basemar.lol/)
+ - [https://unionstation.lol/](https://unionstation.lol/)
+ - [https://skoolie.lol/](https://skoolie.lol/)
+ - [https://quantumnoise.org/](https://quantumnoise.org/)
+
