@@ -69,7 +69,7 @@ a{
 ```
 
 
-## [Spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json
+## [Spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json)
 
 ```
 
