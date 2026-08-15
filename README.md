@@ -1,6 +1,6 @@
 ![](qrcode.png)
 
-# [spore](github.com/lafelabs/spore/)
+# [spore](https://github.com/lafelabs/spore/)
 
 self-replicating web swarm
 
