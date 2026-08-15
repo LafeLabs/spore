@@ -46,22 +46,15 @@ self-replicating web swarm
  - add an A record for @ and point to the droplet
  - add an A record for www and point to the droplet
  - get ssh set up and log in from command line
- - ```mkdir -p /var/www/[SUBDOMAIN].[DOMAIN].net/public_html```
- - ```cd /var/www/[SUBDOMAIN].[DOMAIN].net/public_html```
+ - ```mkdir -p /var/www/[DOMAIN]/public_html```
+ - ```cd /var/www/[DOMAIN]/public_html```
  - ```sudo curl -o spore.php https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.php ```
  - ```php spore.php```
  - ```cd /etc/apache2/sites-available/```
  - ```cp southplatte.net.conf [SUBDOMAIN].[DOMAIN].net.conf```
- - ```cp southplatte.net.conf [SUBDOMAIN].[DOMAIN].net.conf```
- - ```vi [SUBDOMAIN].[DOMAIN].net.conf```
- -  Change `ServerName` to `[SUBDOMAIN].[DOMAIN].net`
- - **Delete** the `ServerAlias www...` line entirely.
- - Update `DocumentRoot` path to `/var/www/[SUBDOMAIN].[DOMAIN].net/public_html`
- - Update `<Directory>` path to `/var/www/[SUBDOMAIN].[DOMAIN].net/public_html`
- - ```a2ensite [SUBDOMAIN].[DOMAIN].net.conf```
+ - ```a2ensite [DOMAIN].conf```
  - ```systemctl restart apache2```
- - ```chown -R www-data:www-data /var/www/[SUBDOMAIN].[DOMAIN].net/public_html```
- - ```certbot --apache -d [SUBDOMAIN].[DOMAIN].net```
+ - ```certbot --apache -d [DOMAIN]```
  - ```chown -R www-data:www-data /var/www/[SUBDOMAIN].[DOMAIN].net/public_html```
 
  
