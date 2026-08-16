@@ -2,13 +2,15 @@
 
 # [spore](https://github.com/lafelabs/spore/)
 
+BECOME THE FUNGUS!
+
+REPLICATE THE SPORE!
+
 SELF-REPLICATING WEB SWARM!
 
 "DECENTRALIZED" LIKE "THE DITCH BEHIND THE OLIVE GARDEN"!
 
 FREE LIKE AN UNLOCKED DUMPSTER!
-
-BECOME THE FUNGUS!
 
 
 ## Replication Path:
@@ -72,18 +74,18 @@ a{
 ## [Spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json)
 
 ```
-
 [
     "README.md",
     "delete-file.php",
     "delete-fork.php",
     "editor.html",
-    "feed.html",
-    "feed.json",
     "fork.html",
     "fork.php",
     "freebox.html",
     "index.html",
+    "link-maker.html",
+    "links.html",
+    "links.json",
     "list-directories.php",
     "list-files.php",
     "load-file.php",
@@ -95,6 +97,7 @@ a{
     "spore.html",
     "spore.json",
     "spore.php",
+    "spore.sh",
     "stack.html",
     "template.conf.txt",
     "upload-image.php",
@@ -103,6 +106,42 @@ a{
 
 ```
 
+## [spore.sh](https://github.com/LafeLabs/spore/blob/main/spore.sh)
+
+```
+sudo apt update 
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php -y
+mkdir -p /var/www/[DOMAIN]/public_html
+chown -R www-data:www-data /var/www/[DOMAIN]/public_html
+cd /var/www/[DOMAIN]/public_html
+sudo curl -o spore.php https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.php
+php spore.php
+cd /etc/apache2/sites-available/
+sudo curl -o template.conf https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/template.conf.txt
+cp template.conf [DOMAIN].conf
+sed -i "s/TEMPLATE_DOMAIN/[DOMAIN]/g" [DOMAIN].conf
+a2ensite [DOMAIN].conf
+systemctl restart apache2
+certbot --apache -d [DOMAIN]
+```
+
+## Live Web Pages
+
+ - [https://trashrobot.net/](https://trashrobot.net/)
+ - [https://trashrobot.org/](https://trashrobot.org/)
+ - [https://aerostatpark.net/](https://aerostatpark.net/)
+ - [https://composttheology.net/](https://composttheology.net/)
+ - [https://soiltheology.net/](https://soiltheology.net/)
+ - [https://southplatte.net](https://southplatte.net)
+ - [https://basemar.lol/](https://basemar.lol/)
+ - [https://unionstation.lol/](https://unionstation.lol/)
+ - [https://skoolie.lol/](https://skoolie.lol/)
+ - [https://schoolie.lol](https://schoolie.lol)
+ - [https://quantumnoise.org/](https://quantumnoise.org/)
+ - [https://metaspore.net/](https://metaspore.net/)
+ - [https://magicspore.net/](https://magicspore.net/)
+ - [https://denverbus.net](https://denverbus.net)
 
 ## Black Flags
 
@@ -127,20 +166,6 @@ a{
 ![](cardboard-sign-4.png)
 ![](cardboard-sign-5.png)
 ![](cardboard-sign-6.png)
-
-
-## Live Web Pages
-
- - [https://trashrobot.net/](https://trashrobot.net/)
- - [https://trashrobot.org/](https://trashrobot.org/)
- - [https://aerostatpark.net/](https://aerostatpark.net/)
- - [https://composttheology.net/](https://composttheology.net/)
- - [https://soiltheology.net/](https://soiltheology.net/)
- - [https://southplatte.net](https://southplatte.net)
- - [https://basemar.lol/](https://basemar.lol/)
- - [https://unionstation.lol/](https://unionstation.lol/)
- - [https://skoolie.lol/](https://skoolie.lol/)
- - [https://quantumnoise.org/](https://quantumnoise.org/)
 
 ## Rocks
 
