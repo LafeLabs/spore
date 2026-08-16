@@ -10,66 +10,41 @@ spore
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
-    <h1>spore</h1>
     <div id = "qrcode"></div>
-    <a href = "https://github.com/lafelabs/spore/">spore code</a>    
-    <div id = "html-files"></div>
-    <div id = "directories"></div>
-    <textarea id = "wall"></textarea>
+    <h1>
+        <a href= "https://metaspore.net/">metaspore.net</a>
+    </h1>
+<H1>NO WAR BUT THE MATH WAR!</H1>
+<H1>BECOME THE FUNGUS!</H1>
+<H1>REPLICATE THE SPORE!</H1>
+<H1>DELETE BIG TECH!</H1>
+<p>Get a domain ($1.50 for most .lol domains for the first year, about $13 for .net) at <a href = "https://porkbun.com">porkbun.com</a> and a minimal "droplet" virtual Ubuntu server at <a href = "https://digitalocean.com">digitalocean.com</a> for $5/month. Point the name servers at porkbun to NS1.DIGITALOCEAN.COM, NS2.DIGITALOCEAN.COM, NS3.DIGITALOCEAN.COM. In Digital Ocean web interface, create a domain, put in your new domain.  Then add A records for @ and www that point to that droplet. Then log into your droplet with ssh and replicate the spore as follows:</p>
+<PRE>
+sudo apt update 
+sudo apt install apache2 -y
+sudo apt install php libapache2-mod-php -y
+mkdir -p /var/www/[DOMAIN]/public_html
+chown -R www-data:www-data /var/www/[DOMAIN]/public_html
+cd /var/www/[DOMAIN]/public_html
+sudo curl -o spore.php https://metaspore.net/spore.php
+php spore.php
+cd /etc/apache2/sites-available/
+sudo curl -o template.conf https://metaspore.net/template.conf.txt
+cp template.conf [DOMAIN].conf
+sed -i "s/TEMPLATE_DOMAIN/[DOMAIN]/g" [DOMAIN].conf
+a2ensite [DOMAIN].conf
+systemctl restart apache2
+certbot --apache -d [DOMAIN]
+</PRE>
+<style>
+    h1{
+        font-family:arial;
+    }
+    pre{
+        font-family:courier;
+    }
+</style>
 <script>
-
-fetch('list-files.php')
-    .then(xhr => xhr.json())
-    .then(files => {
-        for (var index = 0; index < files.length; index++) {
-            if (files[index].substring(files[index].length - 5, files[index].length) == ".html" && files[index] != "index.html") {
-                var newa = document.createElement("A");
-                newa.href = files[index];
-                newa.innerHTML = files[index];
-                document.getElementById("html-files").appendChild(newa);
-            }
-        }
-    });
-
-
-directories = [];
-
-fetch('list-directories.php')
-    .then(xhr => xhr.json())
-    .then(data => {
-        directories = data;
-        
-        var newa = document.createElement("A");
-        newa.innerHTML = "up a level (../)";
-        newa.href = "../";
-        document.getElementById("directories").appendChild(newa);
-        
-        for (var index = 0; index < directories.length; index++) {
-            var newa = document.createElement("A");
-            newa.innerHTML = directories[index] + "/";
-            newa.href = directories[index] + "/";
-            document.getElementById("directories").appendChild(newa);
-        }
-    });
-
-wall = "";
-fetch('load-file.php?filename=wall.txt')
-    .then(xhr => xhr.text())
-    .then(wall => {
-        document.getElementById("wall").value = wall;
-});
-
-
-document.getElementById("wall").onkeyup = function() {
-    wall = this.value;
-    data = encodeURIComponent(this.value);
-    fetch('save-file.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-        body: 'data=' + data + '&filename=wall.txt'
-    });
-
-}
 
 codesquaresize = 150;
 qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -82,59 +57,7 @@ qrcode = new QRCode(document.getElementById("qrcode"), {
 });
 
 </script>
-<style>
-body{
-    font-family:Arial;
-}
-h1{
-    text-align:center;
-    font-size:4em;
-}
-p{
-    text-align:justify;
-    padding:1em 1em 1em 1em;
-    font-size:1.5em;
-    border:solid;
-    display:block;
-    border-color:white;
-    border-width:10px;
-    border-radius:1em;
-    background-color:#0000ff;
-    color:white;
-    width:80%;
-    margin:auto;
-    margin-top:1em;
-
-}
-a{
-    text-align:center;
-    font-size:3em;
-    width:80%;
-    margin:auto;
-    display:block;
-    border:solid;
-    border-radius:0.5em;
-    border-width:0.5em;
-    color:blue;
-    margin-top:1em;
-    margin-bottom:0.5em;
-    overflow-x:scroll;
-}
-#qrcode img{
-    display:block;
-    margin:auto;
-}
-#wall{
-    width:80%;
-    display:block;
-    margin:auto;
-    border:solid;
-    FONT-FAMILY:Arial;
-    font-size:2em;
-    height:20em;
-    padding:0.5em 0.5em 0.5em 0.5em;
-    border-radius:0.5em;
-}
-</style>
 </body>
 </html>
+
+

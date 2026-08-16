@@ -1,5 +1,6 @@
 <a style ="font-family:Arial;color:blue;font-size:1.5em;" href = "index.html">index.html</a>
 <br>
+<a style ="font-family:Arial;color:blue;font-size:1.5em;" href = "editor.html">editor.html</a>
 <br>
 <pre>
 <?php
