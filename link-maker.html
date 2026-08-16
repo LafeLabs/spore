@@ -6,7 +6,7 @@
 spore stack
    -->
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
-  <title>feed editor</title>  
+  <title>link maker</title>  
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
@@ -19,7 +19,7 @@ spore stack
             </td>
         </tr>
     </table>
-    <div id = "feed"></div>
+    <div id = "links"></div>
 <script>
 
 document.getElementById("new-link").value = "";
@@ -31,38 +31,38 @@ document.getElementById("new-link").onchange = function(){
     newLink.href = this.value;
     newLink.innerHTML = this.value;
     this.value = "";
-    feed.unshift(newLink);
+    links.unshift(newLink);
     drawFeed();
-    data = encodeURIComponent(JSON.stringify(feed,null,"    "));
+    data = encodeURIComponent(JSON.stringify(links,null,"    "));
     fetch('save-file.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-        body: 'data=' + data + '&filename=feed.json'
+        body: 'data=' + data + '&filename=links.json'
     });    
     
     
 }
 
-feed = [];
+links = [];
 var httpc = new XMLHttpRequest();
 httpc.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        feed = JSON.parse(this.responseText);
+        links = JSON.parse(this.responseText);
         drawFeed();
     }
 };
-httpc.open("GET", "load-file.php?filename=feed.json", true);
+httpc.open("GET", "load-file.php?filename=links.json", true);
 httpc.send()
 
 
 function drawFeed(){
-    document.getElementById("feed").innerHTML = "";
-    for(let index = 0;index < feed.length;index++){
+    document.getElementById("links").innerHTML = "";
+    for(let index = 0;index < links.length;index++){
         var newspan = document.createElement("SPAN");
-        newspan.innerHTML = feed[index].href;
+        newspan.innerHTML = links[index].href;
         newspan.className = "link";
-        newspan.name = feed[index].href;
-        document.getElementById("feed").appendChild(newspan);
+        newspan.name = links[index].href;
+        document.getElementById("links").appendChild(newspan);
         var deleteButton = document.createElement("SPAN");
         deleteButton.innerHTML = "DESTROY";
         deleteButton.className = "destroy";
@@ -70,24 +70,42 @@ function drawFeed(){
         deleteButton.onclick = function(){
             destroyLink = this.parentElement.name; 
             let newFeed = [];
-            for(let index = 0;index < feed.length;index++){
-                if(feed[index].href != destroyLink){
-                    newFeed.push(feed[index]);
+            for(let index = 0;index < links.length;index++){
+                if(links[index].href != destroyLink){
+                    newFeed.push(links[index]);
                 }
             }
-            feed = newFeed;
+            links = newFeed;
             drawFeed();
-            data = encodeURIComponent(JSON.stringify(feed,null,"    "));
+            data = encodeURIComponent(JSON.stringify(links,null,"    "));
             fetch('save-file.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-                body: 'data=' + data + '&filename=feed.json'
+                body: 'data=' + data + '&filename=links.json'
             });
             
         }
     }
 }
 
+resetFeed = [
+    {
+        "href": "https://github.com/lafelabs/spore/",
+        "innerHTML": "https://github.com/lafelabs/spore/"
+    },
+    {
+        "href": "spore.html",
+        "innerHTML": "spore.html"
+    },
+    {
+        "href": "qrcode.html",
+        "innerHTML": "qrcode.html"
+    },
+    {
+        "href": "index.html",
+        "innerHTML": "home"
+    }
+];
 </script>
 <style>
 
@@ -116,7 +134,7 @@ input{
     font-size:1em;
 }
 
-#feed {
+#links {
   font-family: Comic Sans MS;
   background-color: #9f8767;
   box-sizing: border-box;

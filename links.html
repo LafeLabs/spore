@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+spore stack
+   -->
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
+  <title>links</title>  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
+</head>
+<body>
+    <div id = "qrcode"></div>
+    <a style = "position:absolute;color:blue;top:10px;left:200px;font-size:2em" href = "index.html">HOME</a>
+    <div id = "links"></div>
+<script>
+
+codesquaresize = 150;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: window.location.href,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+
+links = [];
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        links = JSON.parse(this.responseText);
+        for(let index = 0;index < links.length;index++){
+            var newa = document.createElement("A");
+            newa.innerHTML = links[index].innerHTML;
+            newa.href = links[index].href;
+            document.getElementById("links").appendChild(newa);
+        }
+
+    }
+};
+httpc.open("GET", "load-file.php?filename=links.json", true);
+httpc.send()
+
+
+</script>
+<style>
+
+#title {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: clamp(1.5em, 5vw, 3em);
+}
+
+
+#qrcode {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#links {
+  font-family: Comic Sans MS;
+  background-color: #9f8767;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+    border:solid;
+
+  top: max(180px, 25vw);
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  font-size: clamp(1.2em, 4vw, 3em);
+    overflow:scroll;
+
+}
+
+
+
+#links a{
+    text-align:center;
+    font-size:2em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    color:blue;
+    border-radius:0.5em;
+    border-width:0.1em;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+    cursor:pointer;
+    
+}
+body {
+  background-color: #9f8767;
+  font-family:  Comic Sans MS;
+}
+
+@media (min-width: 768px) {
+  #links {
+    top: 180px;
+    font-size: 3em;
+  }
+    
+}
+</style>
+</body>
+</html>
