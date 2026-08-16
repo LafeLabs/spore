@@ -10,7 +10,9 @@ spore stack
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
+    <a id = "linklink" href=  "links.html">links.html</a>
     <a id = "homelink" href=  "index.html">index.html</a>
+
     <table>
         <tr>
             <td>CREATE:</td>
@@ -19,6 +21,7 @@ spore stack
             </td>
         </tr>
     </table>
+    <span id = "clear">CLEAR</span>
     <div id = "links"></div>
 <script>
 
@@ -94,20 +97,42 @@ resetFeed = [
         "innerHTML": "https://github.com/lafelabs/spore/"
     },
     {
-        "href": "spore.html",
-        "innerHTML": "spore.html"
-    },
-    {
-        "href": "qrcode.html",
-        "innerHTML": "qrcode.html"
-    },
-    {
         "href": "index.html",
         "innerHTML": "home"
     }
 ];
+
+document.getElementById("clear").onclick = function(){
+    links = structuredClone(resetFeed);
+    drawFeed();
+     data = encodeURIComponent(JSON.stringify(links,null,"    "));
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=links.json'
+    });    
+       
+}
+
 </script>
 <style>
+#clear{
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:2;
+    border:solid;
+    padding:10px 10px 10px 10px;
+    font-size:26px;
+    border-radius:10px;
+    cursor:pointer;
+}
+#clear:hover{
+    background-color:#00000080;
+}
+#clear:active{
+    background-color:#00ff0080;
+}
 
 .destroy{
     color:red;
@@ -124,6 +149,11 @@ resetFeed = [
     color:blue;
     font-size:2em;
 }
+#linklink {
+    color:blue;
+    font-size:2em;
+}
+
 table{
     font-size:2em;
 }
@@ -143,7 +173,7 @@ input{
   position: absolute;
     border:solid;
 
-  top: max(180px, 25vw);
+  top: max(180px, 10vw);
   left: 10px;
   bottom: 10px;
   right: 10px;
@@ -155,7 +185,6 @@ input{
 
 .link{
     text-align:center;
-    font-size:2em;
     width:80%;
     margin:auto;
     display:block;

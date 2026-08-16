@@ -3,19 +3,19 @@
 <head>
    <meta charset="utf-8">
    <!--
-spore stack
+ text
    -->
   <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
-  <title>spore stack</title>  
+  <title>text</title>  
   <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
 </head>
 <body>
     <div id = "qrcode"></div>
-    <h1 id ="stack-link">stack</h1>
-    <h1 id ="feed-link">links</h1>
+
     <h1 id = "title">stack</h1>
+    <h1 id ="stack-link">stack</h1>
+    
     <div id = "stack"></div>
-    <div id = "feed"></div>
     <textarea id = "sign"></textarea>
 <script>
 
@@ -77,39 +77,9 @@ document.getElementById("stack-link").onclick = function(){
     document.getElementById("sign").style.display = "none";
     document.getElementById("stack").style.display = "block";
     document.getElementById("stack-link").style.display = "none";
-    document.getElementById("feed").style.display = "none";
-    document.getElementById("feed-link").style.display = "block";
     document.getElementById("title").innerHTML = "STACK";
     
 }
-
-
-feed = [];
-var httpc = new XMLHttpRequest();
-httpc.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        feed = JSON.parse(this.responseText);
-        for(let index = 0;index < feed.length;index++){
-            var newa = document.createElement("A");
-            newa.innerHTML = feed[index].innerHTML;
-            newa.href = feed[index].href;
-            document.getElementById("feed").appendChild(newa);
-        }
-
-    }
-};
-httpc.open("GET", "load-file.php?filename=feed.json", true);
-httpc.send()
-
-document.getElementById("feed-link").onclick = function(){
-    document.getElementById("sign").style.display = "none";
-    document.getElementById("stack").style.display = "none";
-    document.getElementById("feed").style.display = "block";
-    document.getElementById("stack-link").style.display = "block";
-    this.style.display = "none";    
-    document.getElementById("title").innerHTML = "FEED";
-}
-
 </script>
 <style>
 

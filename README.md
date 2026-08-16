@@ -12,6 +12,23 @@ SELF-REPLICATING WEB SWARM!
 
 FREE LIKE AN UNLOCKED DUMPSTER!
 
+## Live Web Pages
+
+ - [https://metaspore.net/](https://metaspore.net/)
+ - [https://trashrobot.net/](https://trashrobot.net/)
+ - [https://trashrobot.org/](https://trashrobot.org/)
+ - [https://aerostatpark.net/](https://aerostatpark.net/)
+ - [https://composttheology.net/](https://composttheology.net/)
+ - [https://soiltheology.net/](https://soiltheology.net/)
+ - [https://southplatte.net](https://southplatte.net)
+ - [https://basemar.lol/](https://basemar.lol/)
+ - [https://unionstation.lol/](https://unionstation.lol/)
+ - [https://skoolie.lol/](https://skoolie.lol/)
+ - [https://schoolie.lol](https://schoolie.lol)
+ - [https://quantumnoise.org/](https://quantumnoise.org/)
+ - [https://magicspore.net/](https://magicspore.net/)
+ - [https://denverbus.net](https://denverbus.net)
+
 
 ## Replication Path:
 
@@ -126,22 +143,6 @@ systemctl restart apache2
 certbot --apache -d [DOMAIN]
 ```
 
-## Live Web Pages
-
- - [https://trashrobot.net/](https://trashrobot.net/)
- - [https://trashrobot.org/](https://trashrobot.org/)
- - [https://aerostatpark.net/](https://aerostatpark.net/)
- - [https://composttheology.net/](https://composttheology.net/)
- - [https://soiltheology.net/](https://soiltheology.net/)
- - [https://southplatte.net](https://southplatte.net)
- - [https://basemar.lol/](https://basemar.lol/)
- - [https://unionstation.lol/](https://unionstation.lol/)
- - [https://skoolie.lol/](https://skoolie.lol/)
- - [https://schoolie.lol](https://schoolie.lol)
- - [https://quantumnoise.org/](https://quantumnoise.org/)
- - [https://metaspore.net/](https://metaspore.net/)
- - [https://magicspore.net/](https://magicspore.net/)
- - [https://denverbus.net](https://denverbus.net)
 
 ## Black Flags
 
