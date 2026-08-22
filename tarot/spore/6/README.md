@@ -1,8 +1,8 @@
 # [load-file.php](https://github.com/LafeLabs/spore/tree/main/tarot/spore/6)
 
-[spore.php](https://github.com/LafeLabs/spore/blob/main/spore.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHITCH LOADS A FILE.
+[load-file.php](https://github.com/LafeLabs/spore/blob/main/load-file.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHITCH LOADS A FILE.
 
-## load-file.php CODE:
+## [load-file.php](https://github.com/LafeLabs/spore/blob/main/load-file.php) CODE:
 
 ```
     <?
