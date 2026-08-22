@@ -1,4 +1,4 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/2)
 
 ![](card.png)
 
