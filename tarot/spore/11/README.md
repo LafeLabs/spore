@@ -1,12 +1,25 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [delete-file.php](https://github.com/LafeLabs/spore/tree/main/tarot/spore/11)
 
-![](card.png)
+[delete-file.php](https://github.com/LafeLabs/spore/blob/main/list-files.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHICH DELETES FILES.
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+## [fork.php](https://github.com/LafeLabs/spore/blob/main/fork.php) CODE:
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+```
+ <?php
+    $filename = $_POST["filename"];
+    unlink($filename);
+?>
+```
+
+![PHOTOGRAPH OF CARD](card.png)
+
+# [WHEEL OF FORTUNE]()
+
+![WIKIPEDIA IMAGE](https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg)
 
 USE 4 BY 6 INCH THERMAL PRINTER TO PRINT STIKERS AND PUT THEM ON THE CARDBOARD!
 
-# [METASPORE](https://metaspore.net/tarot/spore/0/)
-# [LOCALHOST](http://localhost/spore/tarot/spore/0/)
+# [METASPORE](https://metaspore.net/tarot/spore/10/)
+# [LOCALHOST](http://localhost/spore/tarot/spore/10/)
+# [LOCALHOST/HERE](http://localhost/spore/tarot/spore/10/readme.html)
+

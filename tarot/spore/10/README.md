@@ -20,14 +20,16 @@
 
 ```
 
-## isset
-## _GET
-## if...else
-## json_decode
-## file\_get\_contents
-## mkdir
-## foreach
-## copy
+## [isset](https://www.php.net/manual/en/function.isset.php)
+## [_GET](https://www.php.net/manual/en/reserved.variables.get.php)
+## [if](https://www.php.net/manual/en/control-structures.if.php)
+## [else](https://www.php.net/manual/en/control-structures.else.php)
+## [json_decode](https://www.php.net/manual/en/function.json-decode.php)
+## [file\_get\_contents](https://www.php.net/manual/en/function.file-get-contents.php)
+## [mkdir](https://www.php.net/manual/en/function.mkdir.php)
+## [foreach](https://www.php.net/manual/en/control-structures.foreach.php)
+## [copy](https://www.php.net/manual/en/function.copy.php)
+## [@](https://www.php.net/manual/en/language.operators.errorcontrol.php)
 
 ![PHOTOGRAPH OF CARD](card.png)
 
