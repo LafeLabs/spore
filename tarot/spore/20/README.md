@@ -1,12 +1,16 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [qrcode.js](https://github.com/LafeLabs/spore/tree/main/tarot/spore/20)
 
-![](card.png)
+[qrcode.js](https://davidshimjs.github.io/qrcodejs/) IS A JAVASCRIPT LIBRARY WHICH CREATES QR CODES!
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+![PHOTOGRAPH OF CARD](card.png)
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+# [JUDEMENT](https://en.wikipedia.org/wiki/Judgement_(tarot_card))
+
+![WIKIPEDIA IMAGE](https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg)
 
 USE 4 BY 6 INCH THERMAL PRINTER TO PRINT STIKERS AND PUT THEM ON THE CARDBOARD!
 
-# [METASPORE](https://metaspore.net/tarot/spore/0/)
-# [LOCALHOST](http://localhost/spore/tarot/spore/0/)
+# [METASPORE](https://metaspore.net/tarot/spore/20/)
+# [LOCALHOST](http://localhost/spore/tarot/spore/20/)
+# [LOCALHOST/HERE](http://localhost/spore/tarot/spore/20/readme.html)
+

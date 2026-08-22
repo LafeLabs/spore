@@ -1,12 +1,16 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [qrcode.js](https://github.com/LafeLabs/spore/tree/main/tarot/spore/20)
 
-![](card.png)
+[ace.js](https://ace.c9.io/) IS A JAVASCRIPT LIBRARY WHICH PERFORMS SYNTAX HIGHLIGHTING ON CODE IN MANY LANGUAGES!
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+![PHOTOGRAPH OF CARD](card.png)
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+# [THE WORLD](https://en.wikipedia.org/wiki/The_World_(tarot_card))
+
+![WIKIPEDIA IMAGE](https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg)
 
 USE 4 BY 6 INCH THERMAL PRINTER TO PRINT STIKERS AND PUT THEM ON THE CARDBOARD!
 
-# [METASPORE](https://metaspore.net/tarot/spore/0/)
-# [LOCALHOST](http://localhost/spore/tarot/spore/0/)
+# [METASPORE](https://metaspore.net/tarot/spore/21/)
+# [LOCALHOST](http://localhost/spore/tarot/spore/21/)
+# [LOCALHOST/HERE](http://localhost/spore/tarot/spore/21/readme.html)
+
