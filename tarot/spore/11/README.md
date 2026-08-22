@@ -13,9 +13,9 @@
 
 ![PHOTOGRAPH OF CARD](card.png)
 
-# [WHEEL OF FORTUNE]()
+# [JUSTICE](https://en.wikipedia.org/wiki/Justice_(tarot_card))
 
-![WIKIPEDIA IMAGE](https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg)
+![WIKIPEDIA IMAGE](https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg)
 
 USE 4 BY 6 INCH THERMAL PRINTER TO PRINT STIKERS AND PUT THEM ON THE CARDBOARD!
 
