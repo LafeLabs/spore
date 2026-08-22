@@ -119,6 +119,23 @@ stack  = [
 "ace.js",
 ];
 
+/*
+
+stackJSON = {};
+
+for(let index = 0;index < 22;index++){
+    stackJSON[rightname[index]] = stack[index];
+}
+
+data = encodeURIComponent(JSON.stringify(stackJSON,null,"    "));
+fetch('save-file.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+    body: 'data=' + data + '&filename=stack-json.json'
+});
+*/
+
+
 symbolGlyphCanvas = document.getElementById("symbol-glyph-canvas");
 hebrewGlyphCanvas = document.getElementById("hebrew-glyph-canvas");
 
