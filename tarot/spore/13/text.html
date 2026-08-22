@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+ text
+   -->
+  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
+  <title>text</title>  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
+</head>
+<body>
+    <div id = "qrcode"></div>
+
+    <h1 id = "title">stack</h1>
+    <h1 id ="stack-link">stack</h1>
+    
+    <div id = "stack"></div>
+    <textarea id = "sign"></textarea>
+<script>
+
+sign = "";
+
+fileName = "wall.txt";
+
+fetch('list-files.php')
+    .then(xhr => xhr.json())
+    .then(files => {
+        for (var index = 0; index < files.length; index++) {
+            if (files[index].substring(files[index].length - 4, files[index].length) == ".txt") {
+                var newspan = document.createElement("span");
+                newspan.innerHTML = files[index].split(".txt")[0];
+                document.getElementById("stack").appendChild(newspan);
+                newspan.onclick = function(){
+                    fileName = this.innerHTML + ".txt";
+                
+                    document.getElementById("sign").style.display = "block";
+                    document.getElementById("stack").style.display = "none";
+                    document.getElementById("stack-link").style.display = "block";
+                    
+                    document.getElementById("title").innerHTML = this.innerHTML;
+                    fetch('load-file.php?filename=' + fileName)
+                        .then(xhr => xhr.text())
+                        .then(sign => {
+                            document.getElementById("sign").value = sign;
+                            
+                    });
+                }
+            }
+        }
+    });
+
+
+document.getElementById("sign").onkeyup = function() {
+    sign = this.value;
+    data = encodeURIComponent(this.value);
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=' + fileName
+    });
+
+}
+
+codesquaresize = 150;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: window.location.href,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+document.getElementById("stack-link").onclick = function(){
+    document.getElementById("sign").style.display = "none";
+    document.getElementById("stack").style.display = "block";
+    document.getElementById("stack-link").style.display = "none";
+    document.getElementById("title").innerHTML = "STACK";
+    
+}
+</script>
+<style>
+
+#title {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: clamp(1.5em, 5vw, 3em);
+}
+#feed-link{
+  position: absolute;
+  border:solid;
+  font-size:1em;
+  border-radius:10px;
+  padding-left:1em;
+  padding-right:1em;
+  cursor:pointer;
+  top: 10px;
+  left: 25%;
+  font-size: clamp(1.5em, 5vw, 3em);
+    
+}
+#stack-link{
+  position: absolute;
+  border:solid;
+  display:none;
+  font-size:1em;
+  border-radius:10px;
+  padding-left:1em;
+  padding-right:1em;
+  cursor:pointer;
+  top: 10px;
+  left: 50%;
+  font-size: clamp(1.5em, 5vw, 3em);
+}
+#qrcode {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#sign {
+  font-family: Comic Sans MS;
+  background-color: #9f8767;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+    border:solid;
+
+  top: max(180px, 25vw);
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  display:none;
+  font-size: clamp(1.2em, 4vw, 3em);
+}
+#feed {
+  font-family: Comic Sans MS;
+  background-color: #9f8767;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+    border:solid;
+
+  top: max(180px, 25vw);
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  display:none;
+  font-size: clamp(1.2em, 4vw, 3em);
+    overflow:scroll;
+
+}
+
+#stack {
+  font-family: Comic Sans MS;
+  background-color: #9f8767;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+  top: max(180px, 25vw);
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  border:solid;
+  font-size: clamp(1.2em, 4vw, 3em);
+  overflow:scroll;
+}
+#stack span{
+    text-align:center;
+    font-size:2em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    border-radius:0.5em;
+    border-width:0.1em;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+    cursor:pointer;
+}
+#feed a{
+    text-align:center;
+    font-size:2em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    color:blue;
+    border-radius:0.5em;
+    border-width:0.1em;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+    cursor:pointer;
+    
+}
+body {
+  background-color: #9f8767;
+  font-family:  Comic Sans MS;
+}
+
+@media (min-width: 768px) {
+  #sign {
+    top: 180px;
+    font-size: 3em;
+  }
+  #stack {
+    top: 180px;
+    font-size: 3em;
+  }
+  #feed {
+    top: 180px;
+    font-size: 3em;
+  }
+    
+}
+</style>
+</body>
+</html>

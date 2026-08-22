@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+   geometron-spore
+   -->
+ <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/wAAAAD/AAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAiIAAAAAARAAIAAAAAABEAAgAAAAAAABACAAAAAAAAAQIAAAAAAwAAEgAAADAzMzMwMzMzMwMAAAIQAAAwAAAAAgEAAAAAAAACABAAAAAAAAIAAQAAAAAAAgAAEQAAAAACAAARAAAAACIgAAAAAAAAAgAAAAD+/wAA/H8AAM7/AADO/wAA9v8AAPr/AAC8/QAAAAAAAL59AAD+vwAA/t8AAP7vAAD+8wAA/vMAAPx/AAD+/wAA" rel="icon" type="image/x-icon">
+   <title>tarot</title>
+    <script src = "geometron.js"></script>
+    <script src = "tarot.js"></script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
+</head>
+<body>
+    <span id = "qrcode"></span>
+    <h1 id = "leftname"></h1>
+    <h1 id = "rightname"></h1>
+    <h1 id = "stackname"></h1>
+    <h1 id = "hebrewname"></h1>
+
+    <canvas id = "symbol-glyph-canvas"></canvas>
+    <canvas id = "hebrew-glyph-canvas"></canvas>
+    
+<style>
+#symbol-glyph-canvas{
+    width:200px;
+    height:200px;
+}    
+#hebrew-glyph-canvas{
+    width:200px;
+    height:200px;
+}    
+
+</style>    
+<script>
+
+symbolGVM = new GVM();
+hebrewGVM = new GVM();
+
+stack  = [
+"cardboard",
+"linux/apache/php",
+"html/css/javascript/json/markdown/text",
+"spore.json",
+"meta-spore.php",
+"spore.php",
+"load-file.php",
+"save-file.php",
+"list-files.php",
+"list-directories.php",
+"delete-file.php",
+"delete-fork.php",
+"fork.php",
+"fork.html",
+"editor.html",
+"index.html",
+"readme.html",
+"qrcode.html",
+"README.md",
+"showdown.js",
+"qrcode.js",
+"ace.js",
+];
+
+symbolGlyphCanvas = document.getElementById("symbol-glyph-canvas");
+hebrewGlyphCanvas = document.getElementById("hebrew-glyph-canvas");
+
+cardIndex = 0;
+
+document.getElementById("leftname").innerHTML = leftname[cardIndex];
+document.getElementById("rightname").innerHTML = rightname[cardIndex];
+document.getElementById("stackname").innerHTML = stack[cardIndex];
+
+fetch('load-file.php?filename=hypercube.json')
+    .then(xhr => xhr.text())
+    .then(rawJSON => {
+        symbolGVM.canvas.width = 200; 
+        symbolGVM.canvas.height = 200;
+        symbolGVM.canvas.x0 = 0.5 * symbolGVM.canvas.width; 
+        symbolGVM.canvas.y0 = 0.5 * symbolGVM.canvas.height;
+        symbolGVM.canvas.unit = 0.13 * symbolGVM.canvas.width; 
+        symbolGVM.style.line0 = 1;
+        symbolGVM.hypercube = JSON.parse(rawJSON);
+        symbolGVM.glyph = [];
+        glyphStringArray = deck[cardIndex].split(",");
+        for(let index = 0;index < glyphStringArray.length;index++){
+            if(glyphStringArray[index].length > 1){
+                symbolGVM.glyph.push(parseInt(glyphStringArray[index],8));
+            }
+        }
+        drawGlyph(symbolGlyphCanvas, symbolGVM);
+
+        hebrewGVM.canvas.width = 200; 
+        hebrewGVM.canvas.height = 200;
+        hebrewGVM.canvas.x0 = 0.5 * hebrewGVM.canvas.width; 
+        hebrewGVM.canvas.y0 = 0.5 * hebrewGVM.canvas.height;
+        hebrewGVM.canvas.unit = 0.12 * hebrewGVM.canvas.width; 
+        hebrewGVM.style.line0 = 1;
+        hebrewGVM.hypercube = JSON.parse(rawJSON);
+        hebrewGVM.glyph = [];
+        glyphStringArray = hebrewicons[cardIndex].split(",");
+        for(let index = 0;index < glyphStringArray.length;index++){
+            if(glyphStringArray[index].length > 1){
+                hebrewGVM.glyph.push(parseInt(glyphStringArray[index],8));
+            }
+        }
+        drawGlyph(hebrewGlyphCanvas, hebrewGVM);
+
+
+});
+
+url = "https://github.com/lafelabs/spore/tarot/";
+codesquaresize = 200;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: url,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+</script>
+</body>
+</html>
