@@ -6,3 +6,4 @@
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
 
+![](https://upload.wikimedia.org/wikipedia/commons/4/48/Markdown-mark.svg)

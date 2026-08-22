@@ -50,12 +50,81 @@ https://cloud9-sdk.readme.io/docs/language-mode
 <script>
 
 cardIndex = 0;
-document.getElementById("card-index").value = cardIndex.toString();
+
+
+
+document.getElementById('card-index').addEventListener('keydown', (event) => {
+
+    if (event.key === 'ArrowUp') {
+        console.log('Up arrow detected!');
+        cardIndex++;
+        if(cardIndex > 21){
+            cardIndex=0;
+        }
+        
+        document.getElementById("card-index").value = cardIndex.toString();
+        let httpcz = new XMLHttpRequest();
+        httpcz.open("POST", "save-file.php", true);
+        httpcz.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        httpcz.send("data="+ cardIndex.toString() +"&filename=card-index.txt");//send text to save-file.php
+        
+        currentFile = cardIndex.toString() + "/README.md";
+        var httpc = new XMLHttpRequest();
+        httpc.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                filedata = this.responseText;
+                rawhtml = converter.makeHtml(filedata);
+                document.getElementById("displayscroll").innerHTML = rawhtml;
+                MathJax.Hub.Typeset();//tell Mathjax to update the math
+                editor.setValue(filedata);
+            }
+        };
+        httpc.open("GET", "load-file.php?filename=" + currentFile, true);
+        httpc.send();
+        
+
+    } else if (event.key === 'ArrowDown') {
+        console.log('Down arrow detected!');
+
+        cardIndex--;
+        if(cardIndex < 0){
+            cardIndex = 21;
+        }
+        
+        document.getElementById("card-index").value = cardIndex.toString();
+        let httpcz = new XMLHttpRequest();
+        httpcz.open("POST", "save-file.php", true);
+        httpcz.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        httpcz.send("data="+ cardIndex.toString() +"&filename=card-index.txt");//send text to save-file.php
+        
+        currentFile = cardIndex.toString() + "/README.md";
+        var httpc = new XMLHttpRequest();
+        httpc.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                filedata = this.responseText;
+                rawhtml = converter.makeHtml(filedata);
+                document.getElementById("displayscroll").innerHTML = rawhtml;
+                MathJax.Hub.Typeset();//tell Mathjax to update the math
+                editor.setValue(filedata);
+            }
+        };
+        httpc.open("GET", "load-file.php?filename=" + currentFile, true);
+        httpc.send();
+
+    }
+});
+
 
 document.getElementById("card-index").onchange = function(){
     indexInput = parseInt(this.value);
     if(indexInput >= 0 && indexInput <= 21){
         cardIndex = indexInput;
+
+        let httpcz = new XMLHttpRequest();
+        httpcz.open("POST", "save-file.php", true);
+        httpcz.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        httpcz.send("data="+ cardIndex.toString() +"&filename=card-index.txt");//send text to save-file.php
+        
         currentFile = cardIndex.toString() + "/README.md";
         var httpc = new XMLHttpRequest();
         httpc.onreadystatechange = function() {
@@ -88,19 +157,31 @@ var converter = new showdown.Converter();
 // https://github.com/showdownjs/showdown/wiki/Showdown-Options
 converter.setOption('literalMidWordUnderscores', 'true');
 converter.setOption('tables', 'true')
-    
-var httpc = new XMLHttpRequest();
-httpc.onreadystatechange = function() {
+
+var httpcc = new XMLHttpRequest();
+httpcc.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        filedata = this.responseText;
-        rawhtml = converter.makeHtml(filedata);
-        document.getElementById("displayscroll").innerHTML = rawhtml;
-        MathJax.Hub.Typeset();//tell Mathjax to update the math
-        editor.setValue(filedata);
+        cardIndex = parseInt(this.responseText);
+        currentFile = cardIndex.toString() + "/README.md";
+    
+        var httpc = new XMLHttpRequest();
+        httpc.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                filedata = this.responseText;
+                rawhtml = converter.makeHtml(filedata);
+                document.getElementById("displayscroll").innerHTML = rawhtml;
+                MathJax.Hub.Typeset();//tell Mathjax to update the math
+                editor.setValue(filedata);
+                document.getElementById("card-index").value = cardIndex.toString();
+
+            }
+        };
+        httpc.open("GET", "load-file.php?filename=" + currentFile, true);
+        httpc.send();
     }
 };
-httpc.open("GET", "load-file.php?filename=" + currentFile, true);
-httpc.send();
+httpcc.open("GET", "load-file.php?filename=card-index.txt", true);
+httpcc.send();
 
 document.getElementById("maineditor").onkeyup = function(){
     data = encodeURIComponent(editor.getSession().getValue());
