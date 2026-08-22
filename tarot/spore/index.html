@@ -14,51 +14,78 @@
 <body>
     <canvas id = "symbol-glyph-canvas"></canvas>
     <canvas id = "hebrew-glyph-canvas"></canvas>
-    <span id = "qrcode"></span>
-
-    <h1 id = "leftname"></h1>
-    <h1 id = "rightname"></h1>
-    <h1 id = "stackname"></h1>
-    <h1 id = "hebrewname"></h1>
-    <IMG ID = "cardimage" SRC ="https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg">    
+    <div id = "qrcode"></div>
+    <div id = "leftname"></div>
+    <div id = "rightname"></div>
+    <div id = "stackname"></div>
+    <div id = "hebrewname"></div>
 <style>
 body{
     overflow:hidden;
-    width:600px;
-    height:800px;
+    width:400px;
+    height:600px;
+}
+#hebrewname{
+    position:absolute;
+    left:3px;
+    top:3px;
+    font-family:arial;
+    font-size:16px;
+}
+#leftname{
+    position:absolute;
+    right:3px;
+    top:3px;
+    font-family:arial;
+    font-size:16px;
+    
+}
+#stackname{
+    position:absolute;
+    width:100%;
+    left:0px;
+    text-align:center;
+    top:140px;
+    font-family:arial;
+    font-size:36px;
+}
+#rightname{
+    position:absolute;
+    width:100%;
+    left:0px;
+    text-align:center;
+    bottom:10px;
+    font-family:arial;
+    font-size:36px;
 }
 #symbol-glyph-canvas{
-    width:200px;
-    height:200px;
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:150px;
+    height:150px;
 }    
 #hebrew-glyph-canvas{
-    width:200px;
-    height:200px;
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:150px;
+    height:150px;
 }    
-#qrcode img {
-    display: inline-block !important;
-}
 #qrcode{
-      vertical-align: top;
-      display: inline-block;
-      margin-top:10px;
-}
-#cardimage{
-    width:200px;
+    position:absolute;
+    left:140px;
+    top:10px;
 }
 </style>    
 <script>
-
-cardIndex = 0;
-url = "https://github.com/LafeLabs/spore/tree/main/tarot";
-
 
 symbolGVM = new GVM();
 hebrewGVM = new GVM();
 
 stack  = [
 "CARDBOARD",
-"LINUX/APACHE/PHP",
+"linux/apache/php",
 "html/css/javascript/json/markdown/text",
 "spore.json",
 "meta-spore.php",
@@ -84,6 +111,7 @@ stack  = [
 symbolGlyphCanvas = document.getElementById("symbol-glyph-canvas");
 hebrewGlyphCanvas = document.getElementById("hebrew-glyph-canvas");
 
+cardIndex = 1;
 
 
 fetch('load-file.php?filename=hypercube.json')
@@ -126,14 +154,19 @@ function drawGlyphs(){
     }
     drawGlyph(hebrewGlyphCanvas, hebrewGVM);
     
+    
+    
     document.getElementById("leftname").innerHTML = leftname[cardIndex];
     document.getElementById("rightname").innerHTML = rightname[cardIndex];
     document.getElementById("stackname").innerHTML = stack[cardIndex];
     document.getElementById("hebrewname").innerHTML = hebrewname[cardIndex];
 
+
 }
 
-codesquaresize = 150;
+url = "https://github.com/lafelabs/spore/";
+
+codesquaresize = 120;
 qrcode = new QRCode(document.getElementById("qrcode"), {
 	text: url,
 	width: codesquaresize,
@@ -143,24 +176,8 @@ qrcode = new QRCode(document.getElementById("qrcode"), {
 	correctLevel : QRCode.CorrectLevel.H
 });
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowUp') {
-        console.log('Up arrow pressed');
-        cardIndex--;
-        if(cardIndex < 0){
-            cardIndex = 21;
-        }
-        drawGlyphs();
-        
-    } else if (event.key === 'ArrowDown') {
-        console.log('Down arrow pressed');
-        cardIndex++;
-        if(cardIndex > 21){
-           cardIndex = 0; 
-        }
-        drawGlyphs();
-    }
-});
+
+
 </script>
 </body>
 </html>
