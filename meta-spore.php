@@ -3,21 +3,12 @@
 <a style ="font-family:Arial;color:blue;font-size:1.5em;" href = "editor.html">editor.html</a>
 <br>
 <pre>
+
 <?php
-
-    $files = scandir(getcwd());
-
-    $file_set =[];     
-    foreach($files as $value){
-        if( substr($value,-5) == ".html" || substr($value,-5) == ".json" || substr($value,-4) == ".css" || substr($value,-3) == ".js" || substr($value,-3) == ".md" || substr($value,-4) == ".txt" || substr($value,-6) == ".ipynb" || substr($value,-4) == ".php"  || substr($value,-3) == ".py"|| substr($value,-3) == ".sh"){
-            array_push($file_set,$value);
-        }
-    }
-
-    echo json_encode($file_set,JSON_PRETTY_PRINT);
-    $file = fopen("spore.json","w");// create new file with this name
-    fwrite($file,json_encode($file_set,JSON_PRETTY_PRINT)); //write data to file
-    fclose($file);  //close file
+    $file_set = glob("*.{html,json,css,js,md,txt,ipynb,php,py,sh}", GLOB_BRACE);
+    echo json_encode($file_set, JSON_PRETTY_PRINT);
+    file_put_contents("spore.json", json_encode($file_set, JSON_PRETTY_PRINT));
 ?>
+
 </pre>
 <br>
