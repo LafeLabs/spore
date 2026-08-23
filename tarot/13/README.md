@@ -1,8 +1,8 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [fork.html](https://github.com/LafeLabs/spore/blob/main/tarot/13/README.md)
 
-![](card.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card13.png)
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+# [DEATH](https://en.wikipedia.org/wiki/Death_(Tarot_card))
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg)
 

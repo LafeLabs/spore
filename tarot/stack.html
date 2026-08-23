@@ -20,6 +20,17 @@ fetch('load-file.php?filename=stack.json')
         loadStack();
 });
 
+
+//# [<name/>](<link/>)
+
+//![](<image/>)
+
+//# [<card/>](<card-link/>)
+
+//![](<card-image/>)
+
+//########  SCROLL:  ########
+
 function loadStack(){
     document.getElementById("stack-table").innerHTML = "";
     let newtr = document.createElement("TR");
@@ -31,11 +42,27 @@ function loadStack(){
     nameInputBox.innerHTML = "NAME";
     newtr.appendChild(nameInputBox);
 
-    let stackInputBox = document.createElement("TD");
-    stackInputBox.innerHTML = "LINK";
-    newtr.appendChild(stackInputBox);
+    let linkInputBox = document.createElement("TD");
+    linkInputBox.innerHTML = "LINK";
+    newtr.appendChild(linkInputBox);
 
+    let imageInputBox = document.createElement("TD");
+    imageInputBox.innerHTML = "IMAGE";
+    newtr.appendChild(imageInputBox);
+
+    
     for(let index = 0;index < 22;index++){
+        let readme = "# [" + stack.name[rightname[index]] + "]("  + stack.link[rightname[index]] +")\n\n";
+        readme += "![](" + stack.image[rightname[index]] + ")\n\n";
+        readme += "# [" + rightname[index] + "](" + cardlinks[index] + ")\n\n";
+        readme += "![](" + cardimages[index] + ")\n\n";
+        data = encodeURIComponent(readme);
+        fetch('save-file.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            body: 'data=' + data + '&filename=' + index.toString() + "/README.md"
+        });    
+        
         let newtr = document.createElement("TR");
         document.getElementById("stack-table").appendChild(newtr);
         let cardName = document.createElement("A");
@@ -54,6 +81,13 @@ function loadStack(){
         let linkInput = document.createElement("INPUT");
         linkInput.value = stack.link[rightname[index]];
         linkInputBox.appendChild(linkInput);
+
+        let imageInputBox = document.createElement("TD");
+        newtr.appendChild(imageInputBox);
+        let imageInput = document.createElement("INPUT");
+        imageInput.value = stack.image[rightname[index]];
+        imageInputBox.appendChild(imageInput);
+
         
     }
 }

@@ -1,8 +1,8 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [ace.js](https://github.com/LafeLabs/spore/blob/main/tarot/21/README.md)
 
-![](card.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card21.png)
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+# [THE WORLD](https://en.wikipedia.org/wiki/The_World_(Tarot_card))
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg)
 

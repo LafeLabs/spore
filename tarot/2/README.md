@@ -1,8 +1,8 @@
-# [CARDBOARD](https://github.com/LafeLabs/spore/tree/main/tarot/spore/0)
+# [THE LANGUAGE OF THE WEB](https://github.com/LafeLabs/spore/blob/main/tarot/2/README.md)
 
-![](card.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card2.png)
 
-# [THE FOOL](https://en.wikipedia.org/wiki/The_Fool_(tarot_card))
+# [THE HIGH PRIESTESS](https://en.wikipedia.org/wiki/The_High_Priestess_(Tarot_card))
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg)
 
