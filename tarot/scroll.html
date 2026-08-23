@@ -37,7 +37,7 @@ https://cloud9-sdk.readme.io/docs/language-mode
 <title>SCROLL EDITOR</title>
 </head>
 <body>
-<h1>SCROLL</h1>
+<h1 id ="scroll-title">SCROLL</h1>
 <div id = "lightdarkbutton" class = "button">--> DARK MODE <--</div>
 <table id = "card-table">
     <tr>
@@ -59,6 +59,7 @@ fetch('load-file.php?filename=stack.json')
     .then(xhr => xhr.text())
     .then(rawstack => {
         stack = JSON.parse(rawstack);
+        document.getElementById("scroll-title").innerHTML = stack.name[rightname[cardIndex]]+ " SCROLL";
         rawhtml = converter.makeHtml(stack.scroll[rightname[cardIndex]]);
         document.getElementById("displayscroll").innerHTML = rawhtml;
         MathJax.Hub.Typeset();//tell Mathjax to update the math
@@ -74,6 +75,11 @@ document.getElementById('card-index').addEventListener('keydown', (event) => {
             cardIndex=0;
         }
         document.getElementById("card-index").value = cardIndex.toString();
+        rawhtml = converter.makeHtml(stack.scroll[rightname[cardIndex]]);
+        document.getElementById("scroll-title").innerHTML = stack.name[rightname[cardIndex]]+ " SCROLL";
+        document.getElementById("displayscroll").innerHTML = rawhtml;
+        MathJax.Hub.Typeset();//tell Mathjax to update the math
+        editor.setValue(stack.scroll[rightname[cardIndex]]);
 
     } else if (event.key === 'ArrowDown') {
         console.log('Down arrow detected!');
@@ -83,7 +89,7 @@ document.getElementById('card-index').addEventListener('keydown', (event) => {
             cardIndex = 21;
         }
         document.getElementById("card-index").value = cardIndex.toString();
-
+        document.getElementById("scroll-title").innerHTML = stack.name[rightname[cardIndex]]+ " SCROLL";
         rawhtml = converter.makeHtml(stack.scroll[rightname[cardIndex]]);
         document.getElementById("displayscroll").innerHTML = rawhtml;
         MathJax.Hub.Typeset();//tell Mathjax to update the math
@@ -96,6 +102,7 @@ document.getElementById('card-index').addEventListener('keydown', (event) => {
 document.getElementById("card-index").onchange = function(){
     cardIndex = parseInt(this.value);
     if(cardIndex >= 0 && cardIndex <= 21){
+        document.getElementById("scroll-title").innerHTML = stack.name[rightname[cardIndex]]+ " SCROLL";
         rawhtml = converter.makeHtml(stack.scroll[rightname[cardIndex]]);
         document.getElementById("displayscroll").innerHTML = rawhtml;
         MathJax.Hub.Typeset();//tell Mathjax to update the math
