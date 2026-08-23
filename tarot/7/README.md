@@ -9,4 +9,29 @@
 # Scroll
 
 
-REPLICATE!
+## DESCRIPTION
+
+[save-file.php](https://github.com/LafeLabs/spore/blob/main/save-file.php) SAVES DATA AS A FILE IN LOCAL FILE SYSTEM!
+
+## PHP CODE
+
+```
+<?php
+    $data = $_POST["data"]; //get data 
+    $filename = $_POST["filename"];//get filename
+    $file = fopen($filename,"w");// create new file with this name
+    fwrite($file,$data); //write data to file
+    fclose($file);  //close file
+?>
+```
+
+## JAVASCRIPT EXAMPLE:
+
+```
+    data = encodeURIComponent(JSON.stringify(stack,null,"    "));
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=stack.json'
+    });    
+```
