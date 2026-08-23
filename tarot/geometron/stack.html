@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+stack
+   -->
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA588AANx3AADcdwAA3HcAAN/3AADcdwAAvHsAANx3AADf9wAA3HcAANx3AADcdwAA3/cAAOfPAAD//wAA" rel="icon" type="image/x-icon">
+
+   <title>stack</title>
+   <script src = "tarot.js"></script>
+</head>
+<body>
+<table id = "stack-table"></table>
+<script>
+fetch('load-file.php?filename=stack.json')
+    .then(xhr => xhr.text())
+    .then(rawstack => {
+        stack = JSON.parse(rawstack);
+        loadStack();
+});
+
+function saveStack(){
+    data = encodeURIComponent(JSON.stringify(stack,null,"    "));
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=stack.json'
+    });    
+}
+
+function loadStack(){
+    document.getElementById("stack-table").innerHTML = "";
+    let newtr = document.createElement("TR");
+    document.getElementById("stack-table").appendChild(newtr);
+    let cardName = document.createElement("A");
+    cardName.innerHTML = "CARD";
+    newtr.appendChild(cardName);
+    let nameInputBox = document.createElement("TD");
+    nameInputBox.innerHTML = "NAME";
+    newtr.appendChild(nameInputBox);
+
+    let linkInputBox = document.createElement("TD");
+    linkInputBox.innerHTML = "LINK";
+    newtr.appendChild(linkInputBox);
+
+    let imageInputBox = document.createElement("TD");
+    imageInputBox.innerHTML = "IMAGE";
+    newtr.appendChild(imageInputBox);
+
+    
+    for(let index = 0;index < 22;index++){
+        let readme = "# [" + stack.name[rightname[index]] + "]("  + stack.link[rightname[index]] +")\n\n";
+        readme += "![](" + stack.image[rightname[index]] + ")\n\n";
+        readme += "# [" + rightname[index] + "](" + cardlinks[index] + ")\n\n";
+        readme += "![](" + cardimages[index] + ")\n\n";
+        readme += "# Scroll\n\n\n";
+        readme += stack.scroll[rightname[index]];
+    
+        data = encodeURIComponent(readme);
+        fetch('save-file.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+            body: 'data=' + data + '&filename=' + index.toString() + "/README.md"
+        });    
+        
+        let newtr = document.createElement("TR");
+        document.getElementById("stack-table").appendChild(newtr);
+        let cardName = document.createElement("A");
+        cardName.innerHTML = rightname[index];
+        cardName.className = "name";
+        cardName.href = cardlinks[index];
+        newtr.appendChild(cardName);
+
+        let nameInputBox = document.createElement("TD");
+        newtr.appendChild(nameInputBox);
+        let nameInput = document.createElement("INPUT");
+
+        nameInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["name"][localName] = this.value;
+            saveStack();
+        }
+        
+        nameInput.value = stack.name[rightname[index]];
+        nameInputBox.appendChild(nameInput);
+
+        let linkInputBox = document.createElement("TD");
+        newtr.appendChild(linkInputBox);
+        let linkInput = document.createElement("INPUT");
+        linkInput.value = stack.link[rightname[index]];
+        linkInputBox.appendChild(linkInput);
+        linkInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["link"][localName] = this.value;
+            saveStack();
+        }
+
+        let imageInputBox = document.createElement("TD");
+        newtr.appendChild(imageInputBox);
+        let imageInput = document.createElement("INPUT");
+        imageInput.value = stack.image[rightname[index]];
+        imageInputBox.appendChild(imageInput);
+        imageInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["image"][localName] = this.value;
+            saveStack();
+        }
+        
+    }
+}
+</script>
+<style>
+body{
+    font-family:Arial;
+}
+</style>    
+</body>
+</html>
