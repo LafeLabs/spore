@@ -9,4 +9,10 @@
 # Scroll
 
 
-REPLICATE! ONE BILLION CARDBOARD SIGNS!
+
+# ONE BILLION CARDBOARD SIGNS!
+
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-1.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-2.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-3.png)
+![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-4.png)
