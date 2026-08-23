@@ -44,26 +44,34 @@ fetch('list-directories.php')
     .then(xhr => xhr.json())
     .then(data => {
         directories = data;
+        const cardFolders = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21']);
         
         for (var index = 0; index < directories.length; index++) {
-            var newspan = document.createElement("SPAN");
-            newspan.innerHTML = directories[index];
-            var newdiv = document.createElement("DIV");
-            newdiv.appendChild(newspan);
-            document.getElementById("directories").appendChild(newdiv);
-            var deletebutton = document.createElement("SPAN");
-            deletebutton.innerHTML = "DELETE FORK";
-            deletebutton.className = "deletebutton";
-            newdiv.appendChild(deletebutton);
-            deletebutton.onclick = function(){
-                deadfork = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
-                var httpc = new XMLHttpRequest();
-                var url = "delete-fork.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("fork=" + deadfork);//send text to deletefile.php
-                this.parentNode.parentNode.removeChild(this.parentNode);
-            }            
+            
+
+            if (!cardFolders.has(directories[index])) {
+
+                var newspan = document.createElement("SPAN");
+                newspan.innerHTML = directories[index];
+                var newdiv = document.createElement("DIV");
+                newdiv.appendChild(newspan);
+                document.getElementById("directories").appendChild(newdiv);
+                var deletebutton = document.createElement("SPAN");
+                deletebutton.innerHTML = "DELETE FORK";
+                deletebutton.className = "deletebutton";
+                newdiv.appendChild(deletebutton);
+                deletebutton.onclick = function(){
+                    deadfork = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
+                    var httpc = new XMLHttpRequest();
+                    var url = "delete-fork.php";         
+                    httpc.open("POST", url, true);
+                    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+                    httpc.send("fork=" + deadfork);//send text to deletefile.php
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }            
+            
+            }
+
         }
     });
 

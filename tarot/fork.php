@@ -13,6 +13,15 @@ $files = json_decode(file_get_contents($sporeUrl), true);
 
 mkdir($fork);
 
+for ($i = 0; $i <= 21; $i++) {
+    mkdir($fork . '/' . $i);
+}
+
+for ($i = 0; $i <= 21; $i++) {
+    file_put_contents($fork . '/' . $i . '/README.md', "#README.md\n\n");
+}
+
+
 foreach ($files as $file) {
     @copy($file,$fork."/".$file);
 }
