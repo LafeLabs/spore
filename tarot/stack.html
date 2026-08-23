@@ -20,16 +20,14 @@ fetch('load-file.php?filename=stack.json')
         loadStack();
 });
 
-
-//# [<name/>](<link/>)
-
-//![](<image/>)
-
-//# [<card/>](<card-link/>)
-
-//![](<card-image/>)
-
-//########  SCROLL:  ########
+function saveStack(){
+    data = encodeURIComponent(JSON.stringify(stack,null,"    "));
+    fetch('save-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'data=' + data + '&filename=stack.json'
+    });    
+}
 
 function loadStack(){
     document.getElementById("stack-table").innerHTML = "";
@@ -56,6 +54,9 @@ function loadStack(){
         readme += "![](" + stack.image[rightname[index]] + ")\n\n";
         readme += "# [" + rightname[index] + "](" + cardlinks[index] + ")\n\n";
         readme += "![](" + cardimages[index] + ")\n\n";
+        readme += "# Scroll\n\n\n";
+        readme += stack.scroll[rightname[index]];
+    
         data = encodeURIComponent(readme);
         fetch('save-file.php', {
             method: 'POST',
@@ -67,12 +68,20 @@ function loadStack(){
         document.getElementById("stack-table").appendChild(newtr);
         let cardName = document.createElement("A");
         cardName.innerHTML = rightname[index];
+        cardName.className = "name";
         cardName.href = cardlinks[index];
         newtr.appendChild(cardName);
 
         let nameInputBox = document.createElement("TD");
         newtr.appendChild(nameInputBox);
         let nameInput = document.createElement("INPUT");
+
+        nameInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["name"][localName] = this.value;
+            saveStack();
+        }
+        
         nameInput.value = stack.name[rightname[index]];
         nameInputBox.appendChild(nameInput);
 
@@ -81,13 +90,22 @@ function loadStack(){
         let linkInput = document.createElement("INPUT");
         linkInput.value = stack.link[rightname[index]];
         linkInputBox.appendChild(linkInput);
+        linkInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["link"][localName] = this.value;
+            saveStack();
+        }
 
         let imageInputBox = document.createElement("TD");
         newtr.appendChild(imageInputBox);
         let imageInput = document.createElement("INPUT");
         imageInput.value = stack.image[rightname[index]];
         imageInputBox.appendChild(imageInput);
-
+        imageInput.onchange = function(){
+            let localName = this.parentElement.parentElement.getElementsByClassName("name")[0].innerHTML;
+            stack["image"][localName] = this.value;
+            saveStack();
+        }
         
     }
 }

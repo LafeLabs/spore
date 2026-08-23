@@ -93,6 +93,7 @@ hebrewGVM = new GVM();
 
 urlBase = "https://github.com/LafeLabs/spore/tree/main/tarot/spore/";
 
+links = [];
 
 stack  = [
 "CARDBOARD",
@@ -147,6 +148,13 @@ fetch('load-file.php?filename=hypercube.json')
     .then(rawJSON => {
         hebrewGVM.hypercube = JSON.parse(rawJSON);
         symbolGVM.hypercube = JSON.parse(rawJSON);
+        fetch('load-file.php?filename=stack.json')
+            .then(xhr => xhr.text())
+            .then(rawJSON => {
+                stackJSON = JSON.parse(rawJSON);
+                
+                drawCard();
+        });
         drawCard();
 });
 
@@ -189,7 +197,9 @@ function drawCard(){
     document.getElementById("stackname").innerHTML = stack[cardIndex];
     document.getElementById("hebrewname").innerHTML = hebrewname[cardIndex];
     document.getElementById("indexname").innerHTML = cardIndex.toString();
+    
     url = urlBase + cardIndex.toString();
+    
     qrcode.makeCode(url);
 
 }
