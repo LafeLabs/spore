@@ -152,6 +152,14 @@ fetch('load-file.php?filename=hypercube.json')
             .then(xhr => xhr.text())
             .then(rawJSON => {
                 stackJSON = JSON.parse(rawJSON);
+                stack = [];
+                for(let index = 0;index < 22;index++){
+                    stack.push(stackJSON.name[rightname[index]]);
+                }
+                links = [];
+                for(let index = 0;index < 22;index++){
+                    links.push(stackJSON.link[rightname[index]]);
+                }
                 
                 drawCard();
         });
@@ -198,8 +206,8 @@ function drawCard(){
     document.getElementById("hebrewname").innerHTML = hebrewname[cardIndex];
     document.getElementById("indexname").innerHTML = cardIndex.toString();
     
-    url = urlBase + cardIndex.toString();
-    
+    //url = urlBase + cardIndex.toString();
+    url = links[cardIndex];
     qrcode.makeCode(url);
 
 }
