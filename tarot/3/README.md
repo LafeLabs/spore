@@ -1,4 +1,4 @@
-# [spore.json](https://github.com/LafeLabs/spore/blob/main/tarot/3/README.md)
+# [spore.json](https://github.com/LafeLabs/spore/blob/main/tarot/3/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card3.png)
 
@@ -9,7 +9,7 @@
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json) IS A [JSON](https://en.wikipedia.org/wiki/JSON) FILE WITH A LIST OF THE FILES IN THE SELF-REPLICATING FILE SET THAT IS THE SPORE!
 

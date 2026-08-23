@@ -1,4 +1,4 @@
-# [spore.php](https://github.com/LafeLabs/spore/blob/main/tarot/5/README.md)
+# [spore.php](https://github.com/LafeLabs/spore/blob/main/tarot/5/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card5.png)
 
@@ -9,7 +9,7 @@
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [spore.php](https://github.com/LafeLabs/spore/blob/main/spore.php) IS A PHP SCRIPT WHICH REPLICATES ALL THE FILES IN [spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json) FROM ONE HOST TO ANOTHER ACROSS THE OPEN TRASH MAGIC WEB.
 

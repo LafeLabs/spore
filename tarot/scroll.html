@@ -135,7 +135,6 @@ document.getElementById("maineditor").onkeyup = function(){
         headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
         body: 'data=' + data + '&filename=stack.json'
     });    
-    
 
     let readme = "# [" + stack.name[rightname[cardIndex]] + "]("  + stack.link[rightname[cardIndex]] +")\n\n";
     readme += "![](" + stack.image[rightname[cardIndex]] + ")\n\n";

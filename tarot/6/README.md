@@ -1,4 +1,4 @@
-# [load-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/6/README.md)
+# [load-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/6/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card6.png)
 
@@ -9,11 +9,11 @@
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [load-file.php](https://github.com/LafeLabs/spore/blob/main/load-file.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHITCH LOADS A FILE.
 
-## [load-file.php](https://github.com/LafeLabs/spore/blob/main/load-file.php) CODE:
+# PHP CODE:
 
 ```
     <?

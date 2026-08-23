@@ -1,19 +1,19 @@
-# [fork.php](https://github.com/LafeLabs/spore/blob/main/tarot/10/README.md)
+# [fork.php](https://github.com/LafeLabs/spore/blob/main/tarot/10/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card10.png)
 
 # [WHEEL OF FORTUNE](https://en.wikipedia.org/wiki/Wheel_of_Fortune_(Tarot_card))
 
-![](https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg)
 
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [fork.php](https://github.com/LafeLabs/spore/blob/main/list-files.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHITCH FORKS THE SPORE TREE.
 
-## [fork.php](https://github.com/LafeLabs/spore/blob/main/fork.php) CODE:
+# PHP CODE:
 
 ```
     if(isset($_GET["fork"])){

@@ -1,4 +1,4 @@
-# [save-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/7/README.md)
+# [save-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/7/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card7.png)
 
@@ -9,11 +9,11 @@
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [save-file.php](https://github.com/LafeLabs/spore/blob/main/save-file.php) SAVES DATA AS A FILE IN LOCAL FILE SYSTEM!
 
-## PHP CODE
+# PHP CODE
 
 ```
 <?php
@@ -25,7 +25,7 @@
 ?>
 ```
 
-## JAVASCRIPT EXAMPLE:
+# JAVASCRIPT EXAMPLE:
 
 ```
     data = encodeURIComponent(JSON.stringify(stack,null,"    "));

@@ -1,19 +1,19 @@
-# [delete-fork.php](https://github.com/LafeLabs/spore/blob/main/tarot/12/README.md)
+# [delete-fork.php](https://github.com/LafeLabs/spore/blob/main/tarot/12/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card12.png)
 
 # [THE HANGED MAN](https://en.wikipedia.org/wiki/The_Hanged_Man_(tarot_card))
 
-![](https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg)
+![](https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg)
 
 # Scroll
 
 
-## DESCRIPTION
+# DESCRIPTION
 
 [delete-fork.php](https://github.com/LafeLabs/spore/blob/main/list-files.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHICH DELETES FORKS.
 
-## PHP CODE
+# PHP CODE
 
 ```
 <?php
@@ -41,4 +41,17 @@ function rrmdir($src) {
 
 
 ?>
+```
+
+# JAVASCRIPT EXAMPLE CODE
+
+```
+fetch("delete-fork.php", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
+  },
+  body: "fork=" + encodeURIComponent(deadfork)
+});
+
 ```

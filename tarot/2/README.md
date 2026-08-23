@@ -1,4 +1,4 @@
-# [THE LANGUAGE OF THE WEB](https://github.com/LafeLabs/spore/blob/main/tarot/2/README.md)
+# [THE LANGUAGE OF THE WEB](https://github.com/LafeLabs/spore/blob/main/tarot/2/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card2.png)
 
@@ -9,6 +9,8 @@
 # Scroll
 
 
+
+# READ ABOUT THE LANGUAGE OF THE WEB:
 
 ## [HTML(WIKIPEDIA)](https://en.wikipedia.org/wiki/HTML)
 ## [CSS(WIKIPEDIA)](https://en.wikipedia.org/wiki/CSS)
