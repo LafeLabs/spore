@@ -9,4 +9,20 @@
 # Scroll
 
 
-REPLICATE!
+
+
+## DESCRIPTION
+
+[list-files.php](https://github.com/LafeLabs/spore/blob/main/list-files.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHITCH LISTS FILES.
+
+## PHP CODE:
+
+
+```
+<?php
+        $directoryName = isset($_GET["directory"]) ? basename($_GET["directory"]) : '';
+        $targetPath = getcwd() . '/' . $directoryName;
+        $files = array_diff(scandir($targetPath), ['.', '..']);
+        echo json_encode(array_values($files));    
+?>
+```

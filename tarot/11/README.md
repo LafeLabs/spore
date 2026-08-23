@@ -9,4 +9,15 @@
 # Scroll
 
 
-REPLICATE!
+## DESCRIPTION
+
+[delete-file.php](https://github.com/LafeLabs/spore/blob/main/list-files.php) IS A [PHP](https://en.wikipedia.org/wiki/PHP) SCRIPT WHICH DELETES FILES.
+
+## PHP CODE:
+
+```
+ <?php
+    $filename = $_POST["filename"];
+    unlink($filename);
+?>
+```

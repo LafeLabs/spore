@@ -9,4 +9,6 @@
 # Scroll
 
 
-REPLICATE!
+## DESCRIPTION
+
+[fork.html](https://github.com/LafeLabs/spore/blob/main/fork.html) IS A WEB PAGE WHICH CREATES AND DESTROYS FORKS!
