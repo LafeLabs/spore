@@ -1,4 +1,4 @@
-# [showdown.js](https://github.com/LafeLabs/spore/blob/main/tarot/19/)
+# [ROOT](https://github.com/LafeLabs/spore/blob/main/tarot/19/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card19.png)
 

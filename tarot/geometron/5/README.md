@@ -1,6 +1,6 @@
-# [spore.php](https://github.com/LafeLabs/spore/blob/main/tarot/5/)
+# [SKELETRON](https://github.com/LafeLabs/spore/blob/main/tarot/5/)
 
-![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card5.png)
+![](https://raw.githubusercontent.com/LafeLabs/skeletron/main/trashmagic/tripod.png)
 
 # [THE HEIROPHANT](https://en.wikipedia.org/wiki/The_Hierophant_(Tarot_card))
 

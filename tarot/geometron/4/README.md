@@ -1,6 +1,6 @@
-# [meta-spore.php](https://github.com/LafeLabs/spore/blob/main/tarot/4/)
+# [SHAPES](https://github.com/LafeLabs/spore/blob/main/tarot/4/)
 
-![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card4.png)
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/shapes.jpg)
 
 # [THE EMPEROR](https://en.wikipedia.org/wiki/The_Emperor_(Tarot_card))
 

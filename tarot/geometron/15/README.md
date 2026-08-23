@@ -1,4 +1,4 @@
-# [index.html](https://github.com/LafeLabs/spore/blob/main/tarot/15/)
+# [QUANTUM](https://github.com/LafeLabs/spore/blob/main/tarot/15/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card15.png)
 

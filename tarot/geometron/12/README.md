@@ -1,4 +1,4 @@
-# [delete-fork.php](https://github.com/LafeLabs/spore/blob/main/tarot/12/)
+# [ICON](https://github.com/LafeLabs/spore/blob/main/tarot/12/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card12.png)
 

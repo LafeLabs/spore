@@ -1,6 +1,6 @@
-# [HYPERCUBE](https://github.com/LafeLabs/spore/blob/main/tarot/1/)
+# [HYPERCUBE](https://github.com/LafeLabs/hypercube/)
 
-![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card1.png)
+![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/touchgrass.jpg)
 
 # [THE MAGICIAN](https://en.wikipedia.org/wiki/The_Magician_(Tarot_card))
 
@@ -10,3 +10,4 @@
 
 
 # [github.com/lafeLabs/hypercube/](https://github.com/lafeLabs/hypercube/)
+

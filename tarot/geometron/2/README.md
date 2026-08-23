@@ -1,6 +1,6 @@
 # [LAW](https://github.com/LafeLabs/spore/blob/main/tarot/2/)
 
-![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card2.png)
+![](https://upload.wikimedia.org/wikipedia/commons/b/b9/Inscription_of_Naram-Sin.jpg)
 
 # [THE HIGH PRIESTESS](https://en.wikipedia.org/wiki/The_High_Priestess_(Tarot_card))
 

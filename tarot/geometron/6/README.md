@@ -1,4 +1,4 @@
-# [load-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/6/)
+# [JAVASCRIPT](https://github.com/LafeLabs/spore/blob/main/tarot/6/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card6.png)
 

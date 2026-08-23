@@ -1,4 +1,4 @@
-# [README.md](https://github.com/LafeLabs/spore/blob/main/tarot/18/)
+# [PYTHAGORAS](https://github.com/LafeLabs/spore/blob/main/tarot/18/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card18.png)
 

@@ -1,6 +1,6 @@
-# [spore.json](https://github.com/LafeLabs/spore/blob/main/tarot/3/)
+# [BOOK](https://github.com/lafelabs/TRASHBOOK)
 
-![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card3.png)
+![](https://raw.githubusercontent.com/LafeLabs/trashbook/main/trashmagic/ubuntu.png)
 
 # [THE EMPRESS](https://en.wikipedia.org/wiki/The_Empress_(Tarot_card))
 
