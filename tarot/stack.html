@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+stack
+   -->
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA588AANx3AADcdwAA3HcAAN/3AADcdwAAvHsAANx3AADf9wAA3HcAANx3AADcdwAA3/cAAOfPAAD//wAA" rel="icon" type="image/x-icon">
+
+   <title>stack</title>
+   <script src = "tarot.js"></script>
+</head>
+<body>
+<table id = "stack-table"></table>
+<script>
+fetch('load-file.php?filename=stack.json')
+    .then(xhr => xhr.text())
+    .then(rawstack => {
+        stack = JSON.parse(rawstack);
+        loadStack();
+});
+
+function loadStack(){
+    document.getElementById("stack-table").innerHTML = "";
+    let newtr = document.createElement("TR");
+    document.getElementById("stack-table").appendChild(newtr);
+    let cardName = document.createElement("A");
+    cardName.innerHTML = "CARD";
+    newtr.appendChild(cardName);
+    let nameInputBox = document.createElement("TD");
+    nameInputBox.innerHTML = "NAME";
+    newtr.appendChild(nameInputBox);
+
+    let stackInputBox = document.createElement("TD");
+    stackInputBox.innerHTML = "LINK";
+    newtr.appendChild(stackInputBox);
+
+    for(let index = 0;index < 22;index++){
+        let newtr = document.createElement("TR");
+        document.getElementById("stack-table").appendChild(newtr);
+        let cardName = document.createElement("A");
+        cardName.innerHTML = rightname[index];
+        cardName.href = cardlinks[index];
+        newtr.appendChild(cardName);
+
+        let nameInputBox = document.createElement("TD");
+        newtr.appendChild(nameInputBox);
+        let nameInput = document.createElement("INPUT");
+        nameInput.value = stack.name[rightname[index]];
+        nameInputBox.appendChild(nameInput);
+
+        let linkInputBox = document.createElement("TD");
+        newtr.appendChild(linkInputBox);
+        let linkInput = document.createElement("INPUT");
+        linkInput.value = stack.link[rightname[index]];
+        linkInputBox.appendChild(linkInput);
+        
+    }
+}
+</script>
+<style>
+body{
+    font-family:Arial;
+}
+</style>    
+</body>
+</html>
