@@ -1,4 +1,4 @@
-# [SKELETRON](https://github.com/LafeLabs/spore/blob/main/tarot/5/)
+# [SKELETRON](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/5/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/skeletron/main/trashmagic/tripod.png)
 

@@ -1,4 +1,4 @@
-# [SHAPES](https://github.com/LafeLabs/spore/blob/main/tarot/4/)
+# [SHAPES](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/4/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/hypercube/main/uploadimages/shapes.jpg)
 

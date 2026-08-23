@@ -1,4 +1,4 @@
-# [LAW](https://github.com/LafeLabs/spore/blob/main/tarot/2/)
+# [LAW](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/2/)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b9/Inscription_of_Naram-Sin.jpg)
 
