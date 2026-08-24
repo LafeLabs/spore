@@ -1,4 +1,4 @@
-# [TRASH](https://github.com/LafeLabs/spore/blob/main/tarot/13/)
+# [TRASH](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/13/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card13.png)
 

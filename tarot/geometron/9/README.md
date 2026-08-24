@@ -1,4 +1,4 @@
-# [CHEMICALS](https://github.com/LafeLabs/spore/blob/main/tarot/9/)
+# [CHEMICALS](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/9/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card9.png)
 

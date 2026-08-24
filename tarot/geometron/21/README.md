@@ -1,4 +1,4 @@
-# [NETWORK](https://github.com/LafeLabs/spore/blob/main/tarot/21/)
+# [NETWORK](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/21/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card21.png)
 

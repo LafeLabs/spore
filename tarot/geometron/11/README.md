@@ -1,4 +1,4 @@
-# [CHAINSAW](https://github.com/LafeLabs/spore/blob/main/tarot/11/)
+# [CHAINSAW](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/11/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card11.png)
 

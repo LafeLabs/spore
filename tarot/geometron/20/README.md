@@ -1,4 +1,4 @@
-# [ROBOT](https://github.com/LafeLabs/spore/blob/main/tarot/20/)
+# [ROBOT](https://github.com/LafeLabs/spore/blob/main/tarot/geometron20/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card20.png)
 

@@ -25,8 +25,10 @@ fork
         </tr>
     </table>
     <div id = "directories"></div>
+    <div id = "links"></div>
 
 <script>
+deleteMode = false;
 
 document.getElementById("fork").value = "";
 document.getElementById("fork").select();
@@ -44,26 +46,34 @@ fetch('list-directories.php')
     .then(xhr => xhr.json())
     .then(data => {
         directories = data;
-        
         for (var index = 0; index < directories.length; index++) {
+            
+            var newa = document.createElement("A");
+            newa.innerHTML = directories[index];
+            newa.href = directories[index] + "/";
+            document.getElementById("links").appendChild(newa);
             var newspan = document.createElement("SPAN");
             newspan.innerHTML = directories[index];
             var newdiv = document.createElement("DIV");
             newdiv.appendChild(newspan);
             document.getElementById("directories").appendChild(newdiv);
-            var deletebutton = document.createElement("SPAN");
-            deletebutton.innerHTML = "DELETE FORK";
-            deletebutton.className = "deletebutton";
-            newdiv.appendChild(deletebutton);
-            deletebutton.onclick = function(){
-                deadfork = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
-                var httpc = new XMLHttpRequest();
-                var url = "delete-fork.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("fork=" + deadfork);//send text to deletefile.php
-                this.parentNode.parentNode.removeChild(this.parentNode);
-            }            
+            if(deleteMode){
+                var deletebutton = document.createElement("SPAN");
+                deletebutton.innerHTML = "DELETE FORK";
+                deletebutton.className = "deletebutton";
+                newdiv.appendChild(deletebutton);
+                deletebutton.onclick = function(){
+                    deadfork = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
+                    var httpc = new XMLHttpRequest();
+                    var url = "delete-fork.php";         
+                    httpc.open("POST", url, true);
+                    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+                    httpc.send("fork=" + deadfork);//send text to deletefile.php
+                    this.parentNode.parentNode.removeChild(this.parentNode);
+                }           
+            }
+    
+
         }
     });
 

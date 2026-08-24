@@ -1,4 +1,4 @@
-# [MAGIC](https://github.com/LafeLabs/spore/blob/main/tarot/14/)
+# [MAGIC](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/14/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card14.png)
 

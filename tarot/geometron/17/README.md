@@ -1,4 +1,4 @@
-# [PHI](https://github.com/LafeLabs/spore/blob/main/tarot/17/)
+# [PHI](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/17/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card17.png)
 

@@ -61,8 +61,8 @@ fetch('list-directories.php')
                 var newdiv = document.createElement("DIV");
                 newdiv.appendChild(newspan);
                 document.getElementById("directories").appendChild(newdiv);
-                if(deleteButton){
-                var deletebutton = document.createElement("SPAN");
+                if(deleteMode){
+                    var deletebutton = document.createElement("SPAN");
                     deletebutton.innerHTML = "DELETE FORK";
                     deletebutton.className = "deletebutton";
                     newdiv.appendChild(deletebutton);

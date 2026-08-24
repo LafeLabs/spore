@@ -1,4 +1,4 @@
-# [LASER](https://github.com/LafeLabs/spore/blob/main/tarot/10/)
+# [LASER](https://github.com/LafeLabs/spore/blob/main/tarot/geometron/10/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card10.png)
 

@@ -10,6 +10,14 @@ foreach ($files as $file) {
 }
 
 
+for ($i = 0; $i <= 21; $i++) {
+    mkdir($fork . '/' . $i);
+}
+
+for ($i = 0; $i <= 21; $i++) {
+    file_put_contents($i . '/README.md', "#README.md\n\n");
+}
+
 ?>
 <a href = "index.html">index.html</a>
 <style>
