@@ -1,21 +1,32 @@
 
 # [spore/python](https://github.com/LafeLabs/spore/tree/main/python)
 
+create the spore:
+
+```
+python meta-spore.py 
+```
+
+replicate the set:
+
 ```
 python spore.py 
+```
+run the server:
+
+```
+python server.py
 ```
 
 USE WEB SOCKET TO REPLACE ALL THE PHP FILES
 
-THE PHP FILES NEEDED ARE:
+THE PHP FILES NEEDED IN THE SERVER ARE:
 
  - save-file.php
  - load-file.php
  - list-files.php
  - list-directories.php
  - fork.php
- - spore.php
- - meta-spore.php
  - delete-file.php
  - delete-fork.php
 
