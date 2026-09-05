@@ -1,4 +1,4 @@
-# [list-files.php](https://github.com/LafeLabs/spore/blob/main/tarot/8/)
+# [list-files.php](https://github.com/LafeLabs/spore/blob/main/list-files.php)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card8.png)
 

@@ -1,4 +1,4 @@
-# [spore.json](https://github.com/LafeLabs/spore/blob/main/tarot/3/)
+# [spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card3.png)
 

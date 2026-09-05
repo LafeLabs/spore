@@ -1,4 +1,4 @@
-# [ace.js](https://github.com/LafeLabs/spore/blob/main/tarot/21/)
+# [ace.js](https://ace.c9.io/)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card21.png)
 

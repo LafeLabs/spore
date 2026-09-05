@@ -1,4 +1,4 @@
-# [delete-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/11/)
+# [delete-file.php](https://github.com/LafeLabs/spore/blob/main/delete-file.php)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card11.png)
 

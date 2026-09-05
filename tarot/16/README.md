@@ -1,4 +1,4 @@
-# [readme.html](https://github.com/LafeLabs/spore/blob/main/tarot/16/)
+# [readme.html](https://github.com/LafeLabs/spore/blob/main/readme.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card16.png)
 

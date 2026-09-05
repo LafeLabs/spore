@@ -1,4 +1,4 @@
-# [index.html](https://github.com/LafeLabs/spore/blob/main/tarot/15/)
+# [index.html](https://github.com/LafeLabs/spore/blob/main/index.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card15.png)
 

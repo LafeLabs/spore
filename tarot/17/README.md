@@ -1,4 +1,4 @@
-# [qrcode.html](https://github.com/LafeLabs/spore/blob/main/tarot/17/)
+# [qrcode.html](https://github.com/LafeLabs/spore/blob/main/qrcode.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card17.png)
 

@@ -1,4 +1,4 @@
-# [meta-spore.php](https://github.com/LafeLabs/spore/blob/main/tarot/4/)
+# [meta-spore.php](https://github.com/LafeLabs/spore/blob/main/meta-spore.php)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card4.png)
 

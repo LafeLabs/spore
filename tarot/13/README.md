@@ -1,4 +1,4 @@
-# [fork.html](https://github.com/LafeLabs/spore/blob/main/tarot/13/)
+# [fork.html](https://github.com/LafeLabs/spore/blob/main/fork.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card13.png)
 

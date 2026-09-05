@@ -1,4 +1,4 @@
-# [editor.html](https://github.com/LafeLabs/spore/blob/main/tarot/14/)
+# [editor.html](https://github.com/LafeLabs/spore/blob/main/editor.html)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card14.png)
 

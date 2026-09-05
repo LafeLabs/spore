@@ -1,4 +1,4 @@
-# [save-file.php](https://github.com/LafeLabs/spore/blob/main/tarot/7/)
+# [save-file.php](https://github.com/LafeLabs/spore/blob/main/save-file.php)
 
 ![](https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/tarot/spore/card7.png)
 
