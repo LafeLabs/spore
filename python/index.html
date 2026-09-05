@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!-- 
+trash magic spore
+
+github.com/lafelabs/spore/
+
+    -->
+    <title>FULL STACK TRASH MAGIC</title>
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAZ4efAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREAAAAAAAAREQEREREREBERAREREREQEREBEAAAARAREQEQEREBEBERARAQAQEQEREBEBABARAREQEQEREBEBERARAAAAEQEREBERERERAREQEREREREBERAAAAAAAAEREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
+
+    <!--Stop Google:-->
+<META NAME="robots" CONTENT="noindex,nofollow">
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div id = "qrcode"></div>
+    <a style = "color:#ff2cb4; background-color:black; font-family:courier; position:absolute; left:25%; top:1em; z-index:666; font-size:3em;" href= "https://github.com/lafelabs/spore/">/spore/</a>
+    <h1 id = "title">[DOMAIN].[TLD]</h1>
+    <textarea id = "wall"></textarea>
+<script>
+
+codesquaresize = 150;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: window.location.href,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+wall = "";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        wall = this.responseText;
+        document.getElementById("wall").value = wall;  
+    }
+};
+httpc.open("GET", "load-file.php?filename=wall.txt", true);
+httpc.send();
+
+document.getElementById("wall").onkeyup = function() {
+    wall = this.value;
+    data = encodeURIComponent(this.value);
+    var httpc = new XMLHttpRequest();
+    var url = "save-file.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename=wall.txt");//send text to save-file.php
+}
+
+
+</script>
+<style>
+#title {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: clamp(1.5em, 5vw, 3em);
+}
+
+#qrcode {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#wall {
+  font-family: Comic Sans MS;
+  background-color: #9f8767;
+  box-sizing: border-box;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  position: absolute;
+  top: max(180px, 25vw);
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  font-size: clamp(1.2em, 4vw, 3em);
+}
+
+body {
+  background-color: #9f8767;
+  font-family:  Comic Sans MS;
+}
+
+@media (min-width: 768px) {
+  #wall {
+    top: 180px;
+    font-size: 3em;
+  }
+}
+
+
+
+</style>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+    ServerName TEMPLATE_DOMAIN
+    ServerAlias www.TEMPLATE_DOMAIN
+    DocumentRoot /var/www/TEMPLATE_DOMAIN/public_html
+
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =TEMPLATE_DOMAIN [OR]
+    RewriteCond %{SERVER_NAME} =www.TEMPLATE_DOMAIN
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
