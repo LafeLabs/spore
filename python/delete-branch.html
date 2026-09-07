@@ -13,7 +13,9 @@ branch
 </head>
 <body>
     <a href = "index.html">index.html</a>
-    <h1>delete branch</h1>
+    <a href = "branch.html">branch.html</a>
+    <h1>delete branches:</h1>
+    
     <div id = "branches"></div>
 <script>
 deleteMode = true;
@@ -28,6 +30,7 @@ list_branches().then(branches => {
         newspan.innerHTML = branches[index];
         var newdiv = document.createElement("DIV");
         newdiv.appendChild(newspan);
+        newdiv.className = "death-box";
         document.getElementById("branches").appendChild(newdiv);
         if(deleteMode){
             var deletebutton = document.createElement("SPAN");
@@ -49,11 +52,31 @@ list_branches().then(branches => {
 
 </script>
 <style>
-.deletebutton{
-    color:red;
+.death-box{
     border:solid;
+    width:80%;
+    text-align:center;
+    padding:1em 1em 1em 1em;
+    margin:auto;
+    margin-top:1em;
+    margin-bottom:1em;
+    font-size:2em;
     border-color:red;
 }
+.deletebutton{
+    color:red;
+    margin-left:3em;
+    border:solid;
+    border-color:red;
+    cursor:pointer;
+}
+.deletebutton:hover{
+    background-color:#ff000080;
+}
+.deletebutton:active{
+    background-color:red;
+}
+
 body{
     font-family:Arial;
 }
