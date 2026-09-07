@@ -18,7 +18,7 @@ branch
 
     <table>
         <tr>
-            <td>branch name:</td>
+            <td>new branch name:</td>
             <td>
                 <input id = "branch">
             </td>
@@ -27,7 +27,6 @@ branch
             </td>
         </tr>
     </table>
-    <div id = "directories"></div>
     <div id = "links"></div>
 
 <script>
@@ -50,26 +49,7 @@ list_branches().then(directories => {
         newa.innerHTML = directories[index];
         newa.href = directories[index] + "/";
         document.getElementById("links").appendChild(newa);
-        var newspan = document.createElement("SPAN");
-        newspan.innerHTML = directories[index];
-        var newdiv = document.createElement("DIV");
-        newdiv.appendChild(newspan);
-        document.getElementById("directories").appendChild(newdiv);
-        if(deleteMode){
-            var deletebutton = document.createElement("SPAN");
-            deletebutton.innerHTML = "DELETE BRANCH";
-            deletebutton.className = "deletebutton";
-            newdiv.appendChild(deletebutton);
-            deletebutton.onclick = function(){
-                deadbranch = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
-                var httpc = new XMLHttpRequest();
-                var url = "delete-branch.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("branch=" + deadbranch);//send text to deletefile.php
-                this.parentNode.parentNode.removeChild(this.parentNode);
-            }           
-        }
+        
     }
 });
 

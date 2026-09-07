@@ -53,6 +53,7 @@
         "delete-fork.php",
         "editor.html",
         "index.html",
+        "links.html",
         "list-branches.php",
         "list-files.php",
         "load-file.php",
