@@ -26,3 +26,15 @@ and listenens for commands from html which have an action that replaces the php 
  - get\_instrument\_state
  - get\_instrument\_plot
  - save\_instrument\_data
+ 
+
+what needs to be done here:
+
+ - edit readme.html so that it uses the updated syntax with spore.js✅
+ - same with editor.html
+ - same with fork.html
+ - same with death.html
+ - fix fork nomenclature so it's all forks and not folder or dir
+ - update the php to python
+ - add instrument control dummy sections to code
+ 

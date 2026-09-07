@@ -1,115 +1,110 @@
-<!doctype html>
-<html lang="en">
+ <!doctype html>
+<html>
 <head>
-    <meta charset="utf-8">
 
-    <!-- 
-trash magic spore
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">
+    
+<!--
+ace.js project home:
+https://ace.c9.io/
+list of languages:
+https://cloud9-sdk.readme.io/docs/language-mode
+ace.js is BSD license
+-->    
 
-github.com/lafelabs/spore/
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
 
-    -->
-    <title>FULL STACK TRASH MAGIC</title>
-<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAZ4efAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREAAAAAAAAREQEREREREBERAREREREQEREBEAAAARAREQEQEREBEBERARAQAQEQEREBEBABARAREQEQEREBEBERARAAAAEQEREBERERERAREQEREREREBERAAAAAAAAEREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
-
-    <!--Stop Google:-->
-<META NAME="robots" CONTENT="noindex,nofollow">
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src = "spore.js"></script>
+<script src="spore.js"></script>
+<title>spore code editor</title>
 </head>
 <body>
-    <div id = "qrcode"></div>
-    <a style = "color:#ff2cb4; background-color:black; font-family:courier; position:absolute; left:25%; top:1em; z-index:666; font-size:3em;" href= "https://github.com/lafelabs/spore/">/spore/</a>
-    <h1 id = "title">[DOMAIN].[TLD]</h1>
-    <textarea id = "wall"></textarea>
-    
+
+<a href=  "index.html" style = "position:absolute;right:5px;top:5px;font-size:2em;font-family:Arial;z-index:2">HOME</a>
+
+<h1 id = "title">spore.json</h1>
+
+<div id="maineditor" contenteditable="true" spellcheck="false"></div>
+
 <script>
 
-codesquaresize = 150;
-qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: window.location.href,
-	width: codesquaresize,
-	height: codesquaresize,
-	colorDark : "#000000",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
-});
 
+editor = ace.edit("maineditor");
+editor.setTheme("ace/theme/github");
+editor.getSession().setMode("ace/mode/json");
+editor.getSession().setUseWrapMode(true);
+editor.$blockScrolling = Infinity;
+editor.setOption("useWorker", false);
 
-load_file('wall.txt').then(
-    wall => {
-        document.getElementById("wall").value = wall;
-        load_file('spore.json').then(
-            spore_text => {
-                spore = JSON.parse(spore_text);
-                list_files().then(files => {
-                    spore.files = files;
-                    spore.wall = wall;
-                    data = encodeURIComponent(JSON.stringify(spore,null,"    "));
-                    save_file("spore.json",data);
-                });
-            }
-        );
+currentFile = "spore.json";
 
+load_file(currentFile).then(
+    filedata => {
+        setMode();
+        editor.setValue(filedata);
     }
 );
 
 
-
-document.getElementById("wall").onkeyup = function() {
-    
-    wall = this.value;
-    data = encodeURIComponent(this.value);
-    save_file("wall.txt",data);
-    
+document.getElementById("maineditor").onkeyup = function(){
+    data = encodeURIComponent(editor.getSession().getValue());
+    save_file(currentFile,data);
 }
 
+
+
+function setMode() {
+  // Extract everything after the last dot, converted to lowercase
+  const ext = currentFile.slice(currentFile.lastIndexOf('.')).toLowerCase();
+
+  // Define a map of extensions to Ace Editor modes
+  const modeMap = {
+    '.py': 'python',
+    '.txt': 'text',
+    '.md': 'markdown',
+    '.tex': 'latex',
+    '.js': 'javascript',
+    '.ino': 'java',
+    '.css': 'css',
+    '.php': 'php',
+    '.html': 'html',
+    '.json': 'json',
+    '.bat': 'batchfile',
+    '.sh': 'sh'
+  };
+
+  // Look up the mode, defaulting to 'text' if the extension isn't found
+  const mode = modeMap[ext] || 'text';
+  
+  editor.getSession().setMode(`ace/mode/${mode}`);
+}
 
 
 
 </script>
 <style>
-#title {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: clamp(1.5em, 5vw, 3em);
+a{
+    color:blue;
 }
-
-#qrcode {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+body{
+    overflow:hidden;
 }
-
-#wall {
-  font-family: Comic Sans MS;
-  background-color: #9f8767;
-  box-sizing: border-box;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  position: absolute;
-  top: max(180px, 25vw);
-  left: 10px;
-  bottom: 10px;
-  right: 10px;
-  font-size: clamp(1.2em, 4vw, 3em);
+#homelink{
+    position:absolute;
+    top:5px;
+    right:5px;
 }
-
-body {
-  background-color: #9f8767;
-  font-family:  Comic Sans MS;
+#maineditor{
+    position:absolute;  
+    left:25px;
+    right:25px;
+    bottom:25px;
+    top:10%;
+    color:black;
+    font-size:22px;
+    border:solid;
+    border-color:black;
 }
-
-@media (min-width: 768px) {
-  #wall {
-    top: 180px;
-    font-size: 3em;
-  }
-}
-
-
-
 </style>
+
 </body>
 </html>

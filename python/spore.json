@@ -2,7 +2,7 @@
     "id": "home",
     "port": 8086,
     "scroll": "https://github.com/LafeLabs/spore/blob/main/python/README.md",
-    "title": "SPORE",
+    "title": ":::<--SPORE-->:::",
     "qrcode": "https://github.com/lafelabs/spore/",
     "py": "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json",
     "php": "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.php",
