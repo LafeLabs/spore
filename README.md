@@ -2,6 +2,10 @@
 
 # [spore](https://github.com/lafelabs/spore/)
 
+```
+sudo curl -o spore.php https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.php
+php spore.php
+```
 
 ## Live Web Pages
 
@@ -50,90 +54,6 @@
  - ```certbot --apache -d [DOMAIN]```
  - ```chown -R www-data:www-data /var/www/[DOMAIN]/public_html```
 
-## [Spore.php](https://github.com/LafeLabs/spore/blob/main/spore.php)
-
-```
-<?php
-$sporeUrl = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.json";
-
-$baseUrl = explode("spore.json",$sporeUrl)[0];
-
-$files = json_decode(file_get_contents($sporeUrl), true);
-
-foreach ($files as $file) {
-    @copy($baseUrl.$file,$file);
-}
-
-
-?>
-<a href = "index.html">index.html</a>
-<style>
-body{
-    font-size:3em;
-    font-family:arial;
-}
-a{
-    font-size:3em;
-    color:blue;
-}
-</style>
-```
-
-
-## [Spore.json](https://github.com/LafeLabs/spore/blob/main/spore.json)
-
-```
-[
-    "README.md",
-    "delete-file.php",
-    "delete-fork.php",
-    "editor.html",
-    "fork.html",
-    "fork.php",
-    "freebox.html",
-    "index.html",
-    "link-maker.html",
-    "links.html",
-    "links.json",
-    "list-directories.php",
-    "list-files.php",
-    "load-file.php",
-    "meta-spore.php",
-    "mushroom.txt",
-    "qrcode.html",
-    "readme.html",
-    "save-file.php",
-    "spore.html",
-    "spore.json",
-    "spore.php",
-    "spore.sh",
-    "stack.html",
-    "template.conf.txt",
-    "upload-image.php",
-    "wall.txt"
-]
-
-```
-
-## [spore.sh](https://github.com/LafeLabs/spore/blob/main/spore.sh)
-
-```
-sudo apt update 
-sudo apt install apache2 -y
-sudo apt install php libapache2-mod-php -y
-mkdir -p /var/www/[DOMAIN]/public_html
-chown -R www-data:www-data /var/www/[DOMAIN]/public_html
-cd /var/www/[DOMAIN]/public_html
-sudo curl -o spore.php https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.php
-php spore.php
-cd /etc/apache2/sites-available/
-sudo curl -o template.conf https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/template.conf.txt
-cp template.conf [DOMAIN].conf
-sed -i "s/TEMPLATE_DOMAIN/[DOMAIN]/g" [DOMAIN].conf
-a2ensite [DOMAIN].conf
-systemctl restart apache2
-certbot --apache -d [DOMAIN]
-```
 
 
 ## Black Flags
