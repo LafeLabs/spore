@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <!--
+branch
+   -->
+<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAABEAAREQAAABERABERAAAAEREAAREAAAAREAAAABAAAQAAAAAAAQAQAAAAAAAAEQAAAAAAAAEREAAAAAAAAREQAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAM/zAACH4QAAh+EAAMfjAAD73wAA/b8AAP5/AAD8PwAA/D8AAP5/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
+
+  <title>branch</title>  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
+  <script src = "spore.js"></script>
+</head>
+<body>
+    <a href = "index.html">index.html</a>
+    <a href = "branch.html">branch.html</a>
+    <h1>delete branches:</h1>
+    
+    <div id = "branches"></div>
+<script>
+deleteMode = true;
+
+
+branches = [];
+
+list_branches().then(branches => {
+    for (var index = 0; index < branches.length; index++) {
+
+        var newspan = document.createElement("SPAN");
+        newspan.innerHTML = branches[index];
+        var newdiv = document.createElement("DIV");
+        newdiv.appendChild(newspan);
+        newdiv.className = "death-box";
+        document.getElementById("branches").appendChild(newdiv);
+        if(deleteMode){
+            var deletebutton = document.createElement("SPAN");
+            deletebutton.innerHTML = "DELETE BRANCH";
+            deletebutton.className = "deletebutton";
+            newdiv.appendChild(deletebutton);
+            deletebutton.onclick = function(){
+                deadbranch = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
+                delete_branch(deadbranch);                
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            }           
+        }
+    }
+});
+
+</script>
+<style>
+.death-box{
+    border:solid;
+    width:80%;
+    text-align:center;
+    padding:1em 1em 1em 1em;
+    margin:auto;
+    margin-top:1em;
+    margin-bottom:1em;
+    font-size:2em;
+    border-color:red;
+}
+.deletebutton{
+    color:red;
+    margin-left:3em;
+    border:solid;
+    border-color:red;
+    cursor:pointer;
+}
+.deletebutton:hover{
+    background-color:#ff000080;
+}
+.deletebutton:active{
+    background-color:red;
+}
+
+body{
+    font-family:Arial;
+}
+h1{
+    text-align:center;
+    font-size:4em;
+}
+p{
+    text-align:justify;
+    padding:1em 1em 1em 1em;
+    font-size:1.5em;
+    border:solid;
+    display:block;
+    border-color:white;
+    border-width:10px;
+    border-radius:1em;
+    background-color:#0000ff;
+    color:white;
+    width:80%;
+    margin:auto;
+    margin-top:1em;
+
+}
+a{
+    text-align:center;
+    font-size:3em;
+    width:80%;
+    margin:auto;
+    display:block;
+    border:solid;
+    border-radius:0.5em;
+    border-width:0.5em;
+    color:black;
+    margin-top:1em;
+    margin-bottom:0.5em;
+    overflow-x:scroll;
+}
+#qrcode img{
+    display:block;
+    margin:auto;
+}
+#wall{
+    width:80%;
+    display:block;
+    margin:auto;
+    border:solid;
+    FONT-FAMILY:Arial;
+    font-size:2em;
+    height:20em;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    border-radius:0.5em;
+}
+</style>
+</body>
+</html>

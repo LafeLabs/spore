@@ -31,7 +31,6 @@ https://cloud9-sdk.readme.io/docs/language-mode
                 }
             });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
         </script>
-        <script src ="spore.js"></script>
 <title>README.md EDITOR</title>
 </head>
 <body>
@@ -58,21 +57,28 @@ converter.setOption('literalMidWordUnderscores', 'true');
 converter.setOption('tables', 'true')
     
 currentFile = "README.md";
-
-load_file(currentFile).then(
-    readme => {
-        rawhtml = converter.makeHtml(readme);
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        filedata = this.responseText;
+        rawhtml = converter.makeHtml(filedata);
         document.getElementById("displayscroll").innerHTML = rawhtml;
         MathJax.Hub.Typeset();//tell Mathjax to update the math
-        editor.setValue(readme);
+        editor.setValue(filedata);
     }
-);
-
-
+};
+httpc.open("GET", "load-file.php?filename=" + currentFile, true);
+httpc.send();
 
 document.getElementById("maineditor").onkeyup = function(){
     data = encodeURIComponent(editor.getSession().getValue());
-    save_file(currentFile,data);
+    var httpc = new XMLHttpRequest();
+    var url = "save-file.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename="+currentFile);//send text to filesaver.php
+    var fileType = currentFile.split("/")[0]; 
+    var fileName = currentFile.split("/")[1];
 }
 
 

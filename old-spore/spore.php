@@ -1,8 +1,7 @@
 <?php
-    $sporeUrl = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json";
+    $sporeUrl = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/spore.json";
     $baseUrl = explode("spore.json",$sporeUrl)[0];
-    $spore = json_decode(file_get_contents($sporeUrl), true);
-    $files = $spore['files'];    
+    $files = json_decode(file_get_contents($sporeUrl), true);
     foreach ($files as $file) {
         @copy($baseUrl.$file,$file);
     }

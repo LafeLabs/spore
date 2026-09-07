@@ -1,0 +1,21 @@
+[
+    "editor.html",
+    "fork.html",
+    "index.html",
+    "qrcode.html",
+    "readme.html",
+    "spore.json",
+    "README.md",
+    "template.conf.txt",
+    "wall.txt",
+    "delete-file.php",
+    "delete-fork.php",
+    "fork.php",
+    "list-directories.php",
+    "list-files.php",
+    "load-file.php",
+    "meta-spore.php",
+    "save-file.php",
+    "spore.php",
+    "spore.sh"
+]
