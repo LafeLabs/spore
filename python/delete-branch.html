@@ -39,11 +39,7 @@ list_branches().then(branches => {
             newdiv.appendChild(deletebutton);
             deletebutton.onclick = function(){
                 deadbranch = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
-                var httpc = new XMLHttpRequest();
-                var url = "delete-branch.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("branch=" + deadbranch);//send text to deletefile.php
+                delete_branch(deadbranch);                
                 this.parentNode.parentNode.removeChild(this.parentNode);
             }           
         }

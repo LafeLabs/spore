@@ -1,8 +1,8 @@
 {
     "id": "home",
     "link": {
-        "href": "branch.html",
-        "text": "branch.html"
+        "href": "spore.html",
+        "text": "spore.html"
     },
     "port": 8086,
     "scroll": "https://github.com/LafeLabs/spore/blob/main/python/README.md",
@@ -51,7 +51,6 @@
         "delete-file.php",
         "delete-fork.php",
         "editor.html",
-        "foobar",
         "fork.html",
         "fork.php",
         "index.html",
