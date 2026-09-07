@@ -1,8 +1,8 @@
 {
     "id": "home",
     "link": {
-        "href": "spore.html",
-        "text": "spore.html"
+        "href": "https://github.com/lafelabs/spore/",
+        "text": "spore"
     },
     "port": 8086,
     "scroll": "https://github.com/LafeLabs/spore/blob/main/README.md",
