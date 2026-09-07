@@ -14,14 +14,20 @@ function save_file(name,data){
 }
 
 function delete_file(name){
-    
+    fetch('delete-file.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'filename=' + name
+    });    
 }
 
-function create_fork(name){
-    
-}
-function delete_fork(name){
-    
+
+function delete_branch(name){
+    fetch('delete-branch.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+        body: 'branch=' + name
+    });
 }
 
 function list_files(fork) {
@@ -33,8 +39,12 @@ function list_files(fork) {
         });
 }
 
-function list_forks(fork){
-    
+function list_branches(){
+    return fetch('list-branches.php')
+    .then(res => res.json())
+    .then(branches => {
+        return branches; 
+    });
 }
 
 function set_instrument_state(name,state){

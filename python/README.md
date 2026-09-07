@@ -31,7 +31,7 @@ and listenens for commands from html which have an action that replaces the php 
 what needs to be done here:
 
  - edit readme.html so that it uses the updated syntax with spore.js✅
- - same with editor.html
+ - same with editor.html✅
  - same with fork.html
  - same with death.html
  - fix fork nomenclature so it's all forks and not folder or dir
