@@ -7,7 +7,7 @@
 <?php
     $file_set = glob("*.{html,json,css,js,md,txt,ipynb,php,py,sh}", GLOB_BRACE);
     echo json_encode($file_set, JSON_PRETTY_PRINT);
-    file_put_contents("spore.json", json_encode($file_set, JSON_PRETTY_PRINT));
+    file_put_contents("files.json", json_encode($file_set, JSON_PRETTY_PRINT));
 ?>
 
 </pre>
