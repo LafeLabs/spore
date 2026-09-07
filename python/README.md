@@ -1,73 +1,28 @@
 
 # [spore/python](https://github.com/LafeLabs/spore/tree/main/python)
 
-create the spore:
+1. download [spore.py](spore.py)
+2. run spore.py
 
-```
-python meta-spore.py 
-```
+this does not yet work. at all.
 
-replicate the set:
+but when it does, spore.py will open spore.json from a fixed remote url in the top of the file, then get the files and save them locally
 
-```
-python spore.py 
-```
-run the server:
+with the json copied, it will open that file and create spore dictionary which comes from spore.json
 
-```
-python server.py
-```
+then it opens a web socket on the port specified in spore.json (8086 or 6502)
 
-USE WEB SOCKET TO REPLACE ALL THE PHP FILES
+and listenens for commands from html which have an action that replaces the php scripts. the actions shall be
 
-THE PHP FILES NEEDED IN THE SERVER ARE:
-
- - save-file.php
- - load-file.php
- - list-files.php
- - list-directories.php
- - fork.php
- - delete-file.php
- - delete-fork.php
-
-PASS THRU THE SOCKET JSON WITH AN ACTION, AN ARGUMENT, AND DATA WHICH IS MORE JSON
-
-GET BACK JSON 
-
-AND THEY MUST ALL BECOME spore.py
-
-SPORE.PY WILL START BY DEFINING 
-
-```
-spore_json_url = "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json"
-```
-
-IF THERE IS NO SPORE INPUT BUT THERE CAN ALSO BE A SPORE INPUT
-
-THE JSON ARRAY IS THEN LOOPED THROUGH AND EACH FILE COPIED
-
-THEN ALL THE FILES ARE LISTED AND MADE INTO SPORE.JSON LOCALLY 
-
-THEN A WEB SOCKET IS OPENED UP AT PORT 8086, AND THE SERVER SETS UP TO LISTEN AND RESPONSD TO REQUESTS TO LOAD, SAVE, DELETE, FILES OR TO LIST FILES OR FOLDERS, BOTH OF WHICH RETURN A JSON ARRAY WITH THE FILES OR FOLDERS RESPECTIVELY.  
-
-WITH THAT RUNNING, WE ONLY NEED TO REWRITE THE HTML TO TALK TO THE FILE SYSTEM OVER A WEB SOCKET AT PORT 8086.
-
-THE FILES THAT NEED TO BE RE-WRITTEN ARE:
-
- - [index.html](index.html)
- - [home.html](home.html)
- - [readme.html](readme.html)
- - [editor.html](editor.html)
- - [fork.html](fork.html)
-
-
-EACH LOCAL INSTANCE
-MUST HAVE ITS OWN ADDRESS AND IGNORE ALL THE OTHER ACTIONS WHICH MIGHT BE HAPPENING
-
-THAT ADDRESS IS SPECIFIED SOMEWHERE AS A LOCAL ONTOLOGY LIKE SPORE/PYTHON
-
-I DO NOT HAVE THE SKILL TO RIGHT THIS RIGHT NOW, I WILL DO IT LATER OR GET HELP. I HATE PYTHON.
-
-I ALSO NEED TO BE SENDING JSON INSTRUCTIONS TO HARDWARE INSTRUMENTS 
-
-
+ - load_file
+ - save_file
+ - delete_file
+ - list_files
+ - create_fork
+ - delete_fork
+ - list_forks
+ - save_png
+ - set\_instrument\_state
+ - get\_instrument\_state
+ - get\_instrument\_plot
+ - save\_instrument\_data

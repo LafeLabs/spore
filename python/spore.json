@@ -1,11 +1,11 @@
 {
     "id": "home",
-    "port":8086,
+    "port": 8086,
     "scroll": "https://github.com/LafeLabs/spore/blob/main/python/README.md",
     "title": "SPORE",
     "qrcode": "https://github.com/lafelabs/spore/",
-    "py":"https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json",
-    "php":"https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.php",
+    "py": "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json",
+    "php": "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.php",
     "json": "https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/python/spore.json",
     "highway": "US 36",
     "boulevard": "Sheridan",
@@ -37,7 +37,7 @@
         "https://quantumnoise.org/",
         "https://magicspore.net/",
         "https://denverbus.net"
-        ],
+    ],
     "files": [
         "README.md",
         "delete-file.php",
@@ -57,6 +57,7 @@
         "spore.js",
         "spore.json",
         "spore.php",
+        "spore.py",
         "spore.sh",
         "template.conf.txt",
         "wall.txt"
