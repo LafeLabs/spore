@@ -43,7 +43,13 @@ load_file('wall.txt').then(
             spore_text => {
                 spore = JSON.parse(spore_text);
                 list_files().then(files => {
-                    spore.files = files;
+                    code_files = [];
+                    for(let index = 0;index < files.length;index++){
+                        if(files[index].endsWith(".txt") || files[index].endsWith(".html") || files[index].endsWith(".css")  || files[index].endsWith(".js")  || files[index].endsWith(".json")  || files[index].endsWith(".php")  || files[index].endsWith(".md")  || files[index].endsWith(".txt")  || files[index].endsWith(".sh")  || files[index].endsWith(".bat")  || files[index].endsWith(".ipynb")  || files[index].endsWith(".txt")  || files[index].endsWith(".py")){
+                            code_files.push(files[index]);
+                        }
+                    }
+                    spore.files = code_files;
                     spore.wall = wall;
                     document.getElementById("link").href = spore.link.href;
                     document.getElementById("link").innerHTML = spore.link.text;

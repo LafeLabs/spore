@@ -6,7 +6,18 @@ if(isset($_GET["branch"])){
 
     $targetPath = getcwd() . '/';
     $files = array_diff(scandir($targetPath), ['.', '..']);
+    
+    $code_files = [];
+    $allowed_extensions = ['txt', 'html', 'css', 'js', 'json', 'php', 'md', 'sh', 'bat', 'ipynb', 'py'];
+    
     foreach ($files as $file) {
+        $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+        if (in_array($ext, $allowed_extensions)) {
+            $code_files[] = $file;
+        }
+    }
+    
+    foreach ($code_files as $file) {
         @copy($file,$branch."/".$file);
     }
     
