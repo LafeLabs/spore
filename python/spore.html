@@ -39,18 +39,21 @@ qrcode = new QRCode(document.getElementById("qrcode"), {
 load_file('wall.txt').then(
     wall => {
         document.getElementById("wall").value = wall;
+        load_file('spore.json').then(
+            spore_text => {
+                spore = JSON.parse(spore_text);
+                list_files().then(files => {
+                    spore.files = files;
+                    spore.wall = wall;
+                    data = encodeURIComponent(JSON.stringify(spore,null,"    "));
+                    save_file("spore.json",data);
+                });
+            }
+        );
+
     }
 );
 
-load_file('spore.json').then(
-    spore_text => {
-        spore = JSON.parse(spore_text);
-        list_files().then(files => {
-            spore.files = files;
-            
-        });
-    }
-);
 
 
 document.getElementById("wall").onkeyup = function() {
