@@ -11,5 +11,4 @@ with urllib.request.urlopen(spore['json']) as response:
 
 for file in spore['files']:
     print(files_root + file)
-    # copy from files_root + file to file
     urllib.request.urlretrieve(files_root + file, file)
