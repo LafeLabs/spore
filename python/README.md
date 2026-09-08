@@ -1,9 +1,11 @@
 
 # [spore/python](https://github.com/LafeLabs/spore/tree/main/python)
 
-1. download [spore.py](spore.py)
-2. run spore.py
+Download the code into a folder where you want to run it. Navigate in a Python terminal such as Miniforge, and run
 
 ```
-python spore.py
+python server.py
 ```
+
+Then open the .html files and they should work.  Editor edits all the files. 
+
