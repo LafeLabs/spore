@@ -18,7 +18,6 @@ ace.js is BSD license
 -->    
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js" integrity="sha512-T2otaV2NuxAJAOCoj8ijyy+eAAadZlpvdLmakrIGVFbBkthgIFqLTXd+T8Z+S+kf4V7Ib5+6f6r4D4IdS9Ey4A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <script src="spore.js"></script>
 <title>spore code editor</title>
 </head>
@@ -129,7 +128,7 @@ list_files().then(files => {
 document.getElementById("currentfilename").innerHTML = currentFile;
 
 document.getElementById("maineditor").onkeyup = function(){
-    data = encodeURIComponent(editor.getSession().getValue());
+    data = editor.getSession().getValue();
     save_file(currentFile,data);
     var fileType = currentFile.split("/")[0]; 
     var fileName = currentFile.split("/")[1];
@@ -151,7 +150,7 @@ document.getElementById("newscrollinput").onchange = function(){
     scroll = editor.getSession().getValue();
     setMode();
     editor.setValue(scroll);  
-    data = encodeURIComponent(scroll);
+    data = scroll;
 
     save_file(currentFile,data);
 

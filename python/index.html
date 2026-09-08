@@ -2,75 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
-    <!-- 
-trash magic spore
-
-github.com/lafelabs/spore/
-
-    -->
     <title>FULL STACK TRASH MAGIC</title>
-<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAZ4efAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREAAAAAAAAREQEREREREBERAREREREQEREBEAAAARAREQEQEREBEBERARAQAQEQEREBEBABARAREQEQEREBEBERARAAAAEQEREBERERERAREQEREREREBERAAAAAAAAEREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
-
-    <!--Stop Google:-->
-<META NAME="robots" CONTENT="noindex,nofollow">
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src = "spore.js"></script>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAZ4efAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREAAAAAAAAREQEREREREBERAREREREQEREBEAAAARAREQEQEREBEBERARAQAQEQEREBEBABARAREQEQEREBEBERARAAAAEQEREBERERERAREQEREREREBERAAAAAAAAEREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
+    <meta name="robots" content="noindex,nofollow">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="spore.js"></script>
 </head>
 <body>
-    <div id = "qrcode"></div>
-    <a id = "link" style = "color:#ff2cb4; background-color:black; font-family:courier; position:absolute; left:25%; top:1em; z-index:666; font-size:3em;" href= "https://github.com/lafelabs/spore/">/spore/</a>
-    <h1 id = "title">[DOMAIN].[TLD]</h1>
-    <textarea id = "wall"></textarea>
+    <div id="qrcode"></div>
+    <a id="link" style="color:#ff2cb4; background-color:black; font-family:courier; position:absolute; left:25%; top:1em; z-index:666; font-size:3em;" href="https://github.com">/spore/</a>
+    <h1 id="title">[DOMAIN].[TLD]</h1>
+    <textarea id="wall"></textarea>
     
 <script>
-
 codesquaresize = 150;
 qrcode = new QRCode(document.getElementById("qrcode"), {
-	text: window.location.href,
-	width: codesquaresize,
-	height: codesquaresize,
-	colorDark : "#000000",
-	colorLight : "#ffffff",
-	correctLevel : QRCode.CorrectLevel.H
+    text: window.location.href,
+    width: codesquaresize,
+    height: codesquaresize,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H
 });
 
-
-load_file('wall.txt').then(
-    wall => {
-        document.getElementById("wall").value = wall;
-        load_file('spore.json').then(
-            spore_text => {
-                spore = JSON.parse(spore_text);
-                list_files().then(files => {
-                    spore.files = files;
-                    spore.wall = wall;
-                    document.getElementById("link").href = spore.link.href;
-                    document.getElementById("link").innerHTML = spore.link.text;
-                    document.getElementById("title").innerHTML = spore.title;
-                    data = encodeURIComponent(JSON.stringify(spore,null,"    "));
-                    save_file("spore.json",data);
-                });
+load_file('wall.txt').then(wall => {
+    document.getElementById("wall").value = wall;
+    load_file('spore.json').then(spore_text => {
+        let spore = JSON.parse(spore_text);
+        list_files().then(files => {
+            let code_files = [];
+            for(let index = 0; index < files.length; index++){
+                if(files[index].endsWith(".txt") || files[index].endsWith(".html") || files[index].endsWith(".css") || files[index].endsWith(".js") || files[index].endsWith(".json") || files[index].endsWith(".php") || files[index].endsWith(".md") || files[index].endsWith(".sh") || files[index].endsWith(".bat") || files[index].endsWith(".ipynb") || files[index].endsWith(".py")){
+                    code_files.push(files[index]);
+                }
             }
-        );
-
-    }
-);
-
-
+            spore.files = code_files;
+            spore.wall = wall;
+            document.getElementById("link").href = spore.link.href;
+            document.getElementById("link").innerHTML = spore.link.text;
+            document.getElementById("title").innerHTML = spore.title;
+            let rawData = JSON.stringify(spore, null, "    ");
+            save_file("spore.json", rawData);
+        });
+    });
+}).catch(err => {
+    console.error(err);
+});
 
 document.getElementById("wall").onkeyup = function() {
-    
-    wall = this.value;
-    data = encodeURIComponent(this.value);
-    save_file("wall.txt",data);
-    
+    let wall = this.value;
+    save_file("wall.txt", wall);
 }
-
-
-
-
 </script>
+
 <style>
 #title {
   position: absolute;
@@ -78,13 +62,11 @@ document.getElementById("wall").onkeyup = function() {
   right: 10px;
   font-size: clamp(1.5em, 5vw, 3em);
 }
-
 #qrcode {
   position: absolute;
   top: 10px;
   left: 10px;
 }
-
 #wall {
   font-family: Comic Sans MS;
   background-color: #9f8767;
@@ -98,21 +80,16 @@ document.getElementById("wall").onkeyup = function() {
   right: 10px;
   font-size: clamp(1.2em, 4vw, 3em);
 }
-
 body {
   background-color: #9f8767;
-  font-family:  Comic Sans MS;
+  font-family: Comic Sans MS;
 }
-
 @media (min-width: 768px) {
   #wall {
     top: 180px;
     font-size: 3em;
   }
 }
-
-
-
 </style>
 </body>
 </html>

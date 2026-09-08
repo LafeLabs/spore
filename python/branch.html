@@ -8,7 +8,7 @@ branch
 <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAABEAAREQAAABERABERAAAAEREAAREAAAAREAAAABAAAQAAAAAAAQAQAAAAAAAAEQAAAAAAAAEREAAAAAAAAREQAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAM/zAACH4QAAh+EAAMfjAAD73wAA/b8AAP5/AAD8PwAA/D8AAP5/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
 
   <title>branch</title>  
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>   
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src = "spore.js"></script>
 </head>
 <body>
@@ -18,7 +18,7 @@ branch
 
     <table>
         <tr>
-            <td>branch name:</td>
+            <td>new branch name:</td>
             <td>
                 <input id = "branch">
             </td>
@@ -27,7 +27,6 @@ branch
             </td>
         </tr>
     </table>
-    <div id = "directories"></div>
     <div id = "links"></div>
 
 <script>
@@ -37,11 +36,13 @@ document.getElementById("branch").value = "";
 document.getElementById("branch").select();
 
 document.getElementById("branch").onchange = function(){
-    document.getElementById("branchlink").innerHTML = "click this branch link";
-    document.getElementById("branchlink").href = "create-branch.php?branch=" + this.value;
-    document.getElementById("branchlink").style.display = "inline";
+    let branchName = this.value;
+    create_branch(branchName).then(() => {
+        document.getElementById("branchlink").innerHTML = branchName + "/index.html";
+        document.getElementById("branchlink").href = branchName + "/index.html";
+        document.getElementById("branchlink").style.display = "inline";
+    });
 }
-
 directories = [];
 
 list_branches().then(directories => {
@@ -50,26 +51,7 @@ list_branches().then(directories => {
         newa.innerHTML = directories[index];
         newa.href = directories[index] + "/";
         document.getElementById("links").appendChild(newa);
-        var newspan = document.createElement("SPAN");
-        newspan.innerHTML = directories[index];
-        var newdiv = document.createElement("DIV");
-        newdiv.appendChild(newspan);
-        document.getElementById("directories").appendChild(newdiv);
-        if(deleteMode){
-            var deletebutton = document.createElement("SPAN");
-            deletebutton.innerHTML = "DELETE BRANCH";
-            deletebutton.className = "deletebutton";
-            newdiv.appendChild(deletebutton);
-            deletebutton.onclick = function(){
-                deadbranch = this.parentElement.getElementsByTagName("SPAN")[0].innerHTML;
-                var httpc = new XMLHttpRequest();
-                var url = "delete-branch.php";         
-                httpc.open("POST", url, true);
-                httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-                httpc.send("branch=" + deadbranch);//send text to deletefile.php
-                this.parentNode.parentNode.removeChild(this.parentNode);
-            }           
-        }
+        
     }
 });
 

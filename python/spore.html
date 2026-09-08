@@ -44,9 +44,8 @@ load_file(currentFile).then(
     }
 );
 
-
 document.getElementById("maineditor").onkeyup = function(){
-    data = encodeURIComponent(editor.getSession().getValue());
+    data = editor.getSession().getValue();
     save_file(currentFile,data);
 }
 

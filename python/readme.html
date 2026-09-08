@@ -1,91 +1,67 @@
- <!doctype html>
+<!doctype html>
 <html>
 <head>
-<!--Stop Google:-->
-<META NAME="robots" CONTENT="noindex,nofollow">
-    
-<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADw8OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAEAAAAQAAEAERAAABARAQEREQAAEBEBAAEAAAAREREAAQAAABEAEQABAAAAEQARAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA3u8AAN7HAADSgwAA0u8AAMDvAADM7wAAzO8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
-
-    
-<!--
-ace.js project home:
-https://ace.c9.io/
-
-list of languages:
-https://cloud9-sdk.readme.io/docs/language-mode
-
-
--->    
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script>
-            MathJax.Hub.Config({
-                tex2jax: {
+    <meta name="robots" content="noindex,nofollow">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADw8OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAABAAEAAAAQAAEAERAAABARAQEREQAAEBEBAAEAAAAREREAAQAAABEAEQABAAAAEQARAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA3u8AAN7HAADSgwAA0u8AAMDvAADM7wAAzO8AAP//AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+        MathJax.Hub.Config({
+            tex2jax: {
                 inlineMath: [['$','$'], ['\\(','\\)']],
                 processEscapes: true,
                 processClass: "mathjax",
                 ignoreClass: "no-mathjax"
-                }
-            });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
-        </script>
-        <script src ="spore.js"></script>
-<title>README.md EDITOR</title>
+            }
+        });
+    </script>
+    <script src="spore.js"></script>
+    <title>README.md EDITOR</title>
 </head>
 <body>
-<h1>README.md</h1>
-<div id = "lightdarkbutton" class = "button">--> DARK MODE <--</div>
-<div class = "no-mathjax" id = "maineditor" contenteditable="true" spellcheck="false"></div>
-<div class = "mathjax" id = "displayscroll"></div>
+    <h1>README.md</h1>
+    <div id="lightdarkbutton" class="button">DARK MODE</div>
+    <div class="no-mathjax" id="maineditor" contenteditable="true" spellcheck="false"></div>
+    <div class="mathjax" id="displayscroll"></div>
 
 <script>
-
 editor = ace.edit("maineditor");
 editor.setTheme("ace/theme/github");
-//editor.setTheme("ace/theme/vibrant_ink");
-//editor.getSession().setMode("ace/mode/html");
 editor.getSession().setMode("ace/mode/markdown");
-
 editor.getSession().setUseWrapMode(true);
 editor.$blockScrolling = Infinity;
 
 var converter = new showdown.Converter();
-// for more on options see here:
-// https://github.com/showdownjs/showdown/wiki/Showdown-Options
 converter.setOption('literalMidWordUnderscores', 'true');
-converter.setOption('tables', 'true')
+converter.setOption('tables', 'true');
     
 currentFile = "README.md";
 
-load_file(currentFile).then(
-    readme => {
-        rawhtml = converter.makeHtml(readme);
-        document.getElementById("displayscroll").innerHTML = rawhtml;
-        MathJax.Hub.Typeset();//tell Mathjax to update the math
-        editor.setValue(readme);
-    }
-);
-
-
+load_file(currentFile).then(readme => {
+    rawhtml = converter.makeHtml(readme);
+    document.getElementById("displayscroll").innerHTML = rawhtml;
+    MathJax.Hub.Typeset();
+    editor.setValue(readme);
+}).catch(err => {
+    console.error(err);
+});
 
 document.getElementById("maineditor").onkeyup = function(){
-    data = encodeURIComponent(editor.getSession().getValue());
-    save_file(currentFile,data);
+    let data = editor.getSession().getValue();
+    save_file(currentFile, data);
 }
-
 
 lightmode = true;
 document.getElementById("lightdarkbutton").style.color = "black";
 document.getElementById("lightdarkbutton").style.borderColor = "black";
-
 document.getElementById("displayscroll").style.backgroundColor = "white";
 document.getElementById("displayscroll").style.color = "black";        
 document.getElementById("lightdarkbutton").innerHTML = "DARK MODE";
 editor.setTheme("ace/theme/github");
+
 var links = document.getElementById("displayscroll").getElementsByTagName("a");
-for(var index = 0;index < links.length;index++){
+for(var index = 0; index < links.length; index++){
     links[index].style.color = "blue";
 }
 
@@ -100,12 +76,10 @@ document.getElementById("lightdarkbutton").onclick = function(){
         document.getElementById("lightdarkbutton").innerHTML = "DARK MODE";
         editor.setTheme("ace/theme/github");
         var links = document.getElementById("displayscroll").getElementsByTagName("a");
-        for(var index = 0;index < links.length;index++){
+        for(var index = 0; index < links.length; index++){
             links[index].style.color = "blue";
         }
-    }
-    else{
-        
+    } else {
         document.getElementById("lightdarkbutton").style.color = "white";
         document.getElementById("lightdarkbutton").style.borderColor = "white";
         document.getElementById("lightdarkbutton").style.backgroundColor = "#101010";
@@ -113,15 +87,14 @@ document.getElementById("lightdarkbutton").onclick = function(){
         document.getElementById("displayscroll").style.color = "white";        
         document.getElementById("lightdarkbutton").innerHTML = "LIGHT MODE";        
         editor.setTheme("ace/theme/vibrant_ink");
-
         var links = document.getElementById("displayscroll").getElementsByTagName("a");
-        for(var index = 0;index < links.length;index++){
+        for(var index = 0; index < links.length; index++){
             links[index].style.color = "#ff2cb4";
         }        
     }
 }
-
 </script>
+
 <style>
 body{
     overflow:hidden;
@@ -167,7 +140,6 @@ h1{
 .button{
     cursor:pointer;
     background-color:white;
-    
 }
 .button:hover{
     background-color:green;
@@ -186,8 +158,6 @@ h1{
     font-size:2em;
     color:black;
 }
-
 </style>
-
 </body>
 </html>
