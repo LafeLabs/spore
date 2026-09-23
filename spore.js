@@ -1,5 +1,4 @@
 
-
 function load_file(name) {
     return fetch('load-file.php?filename=' + name).then(res => res.text());
 }
@@ -45,23 +44,5 @@ function list_branches(){
     .then(branches => {
         return branches; 
     });
-}
-
-function set_instrument_state(name,state){
-    
-}
-
-function get_instrument_state(name){
-    
-}
-
-function get_instrument_plot(name){
-    
-}
-
-function save_instrument_trace(name){
-    //vna
-    //spa
-    //sdr
 }
 

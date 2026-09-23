@@ -40,6 +40,19 @@ currentFile = "spore.json";
 load_file(currentFile).then(
     filedata => {
         setMode();
+        spore = JSON.parse(filedata);
+        list_files().then(files => {
+            code_files = [];
+            for(let index = 0;index < files.length;index++){
+                if(files[index].endsWith(".txt") || files[index].endsWith(".html") || files[index].endsWith(".css")  || files[index].endsWith(".js")  || files[index].endsWith(".json")  || files[index].endsWith(".php")  || files[index].endsWith(".md")  || files[index].endsWith(".txt")  || files[index].endsWith(".sh")  || files[index].endsWith(".bat")  || files[index].endsWith(".ipynb")  || files[index].endsWith(".txt")  || files[index].endsWith(".py")){
+                    code_files.push(files[index]);
+                }
+            }
+            spore.files = code_files;
+            data = encodeURIComponent(JSON.stringify(spore,null,"    "));
+            save_file("spore.json",data);
+        });
+        
         editor.setValue(filedata);
     }
 );
