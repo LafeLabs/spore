@@ -1,0 +1,29 @@
+{
+    "files": [
+        "README.md",
+        "branch.html",
+        "create-branch.php",
+        "delete-branch.html",
+        "delete-branch.php",
+        "delete-file.html",
+        "delete-file.php",
+        "delete-fork.php",
+        "dirt.php",
+        "editor.html",
+        "freebox.html",
+        "index.html",
+        "links.html",
+        "list-branches.php",
+        "list-files.php",
+        "load-file.php",
+        "qrcode.html",
+        "readme.html",
+        "save-file.php",
+        "spore.html",
+        "spore.js",
+        "spore.json",
+        "spore.php",
+        "upload-image.php",
+        "wall.txt"
+    ]
+}
