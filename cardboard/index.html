@@ -2,13 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
-    <!-- 
-trash magic spore
-
-github.com/lafelabs/spore/
-
-    -->
     <title>FULL STACK TRASH MAGIC</title>
 <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAZ4efAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREAAAAAAAAREQEREREREBERAREREREQEREBEAAAARAREQEQEREBEBERARAQAQEQEREBEBABARAREQEQEREBEBERARAAAAEQEREBERERERAREQEREREREBERAAAAAAAAEREREREREREREREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon">
 
@@ -18,7 +11,11 @@ github.com/lafelabs/spore/
 </head>
 <body>
     <div id = "qrcode"></div>
-    <img src="cardboard-sign-1.png">
+    <img class = "cardboard" src="denver-bus-dot-net.png">
+    <p>THE MEDIUM IS THE MESSAGE!</p>
+    <p>ONE BILLION CARDBOARD SIGNS!</p>
+    <p>INTERNET OF TRASH!</p>
+    <p>BECOME UNCOMPUTABLE!</p>
 <script>
 
 codesquaresize = 150;
@@ -41,9 +38,16 @@ qrcode = new QRCode(document.getElementById("qrcode"), {
   left: 10px;
   z-index:666;
 }
-
+.cardboard{
+    max-width:80%;
+}
+p{
+    font-size:5em;
+}
 body {
   background-color: #9f8767;
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", "Chalkboard", "Comic Neue", cursive, sans-serif;
+
 }
 
 </style>
